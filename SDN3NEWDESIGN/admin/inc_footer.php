@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 </main>
 <!-- END MAINN -->
 
@@ -58,4 +59,65 @@ $(document).ready(function() {
 
 </body>
 
+=======
+</main>
+<!-- END MAINN -->
+
+<footer class="bg-light">
+    <div class="text-center p-3" style="background: #CCCCCC;">
+        Copyright &copy; 2022
+    </div>
+</footer>
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            callbacks: {
+                onImageUpload: function(files) {
+                    for (let i = 0; i < files.length; i++) {
+                        $.upload(files[i]);
+                    }
+                }
+            },
+            toolbar: [
+                ["style", ["bold", "italic", "underline", "clear"]],
+                ["fontname", ["fontname"]],
+                ["fontsize", ["fontsize"]],
+                ["color", ["color"]],
+                ["para", ["ul", "ol", "paragraph"]],
+                ["height", ["height"]],
+                ["insert", ["link", "picture", "imageList", "video", "hr"]],
+                ["help", ["help"]]
+            ],
+            dialogsInBody: true,
+            imageList: {
+                endpoint: "daftar_gambar.php",
+                fullUrlPrefix: "../assets/img/upload_an/",
+                thumbUrlPrefix: "../assets/img/upload_an/"
+            }
+        });
+        $.upload = function(file) {
+            let out = new FormData();
+            out.append('file', file, file.name);
+
+            $.ajax({
+                method: 'POST',
+                url: 'upload_gambar.php',
+                contentType: false,
+                cache: false,
+                processData: false,
+                data: out,
+                success: function(img) {
+                    $('#summernote').summernote('insertImage', img);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error(textStatus + " " + errorThrown);
+                }
+            });
+        };
+    });
+</script>
+
+</body>
+
+>>>>>>> 769fcf9918192893ee456d70518fc29dabfff80c
 </html>
