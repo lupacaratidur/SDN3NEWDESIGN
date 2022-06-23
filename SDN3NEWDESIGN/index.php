@@ -1,3 +1,7 @@
+<?php
+include_once("inc/inc_koneksi.php");
+include_once("inc/inc_fungsi.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -271,7 +275,7 @@
         <h2 class="fw-bold mb-5 text-center">Berita Acara Terbaru <br /></h2>
         <div class="row gx-lg-5 mb-5 align-items-center">
           <div class="col-md-6 mb-4 mb-md-0 hover-zoom">
-            <img src="assets/img/berita/marinford.jpg" class="w-100 shadow-5-strong rounded-4 mb-4" alt=""
+            <img src="<?php echo ambil_gambar('5') ?>" class="w-100 shadow-5-strong rounded-4 mb-4" alt=""
               aria-controls="#picker-editor" draggable="false" />
           </div>
           <div class="col-md-6 mb-4 mb-md-0">
