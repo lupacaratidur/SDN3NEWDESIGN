@@ -61,7 +61,7 @@ if ($sukses) {
   <tbody>
     <?php
     $sqltambahan = "";
-    $per_berita  = 2;
+    $per_berita  = 1;
     //  Fungsi Cari
     if ($katakunci != '') {
       $array_katakunci = explode(" ", $katakunci);
@@ -99,7 +99,7 @@ if ($sukses) {
         </a>
 
         <!-- konfirmasi hapus data menggunakan alert -->
-        <a href="berita.php?op=delete&id=<?php echo $r1['id']  ?>"
+        <a href="crud_berita.php?op=delete&id=<?php echo $r1['id']  ?>"
           onclick="return confirm('Apakah yakin ingin hapus data?')">
           <span class="badge bg-danger">Delete</span>
         </a>
@@ -124,7 +124,7 @@ if ($sukses) {
     ?>
     <li class="page-item">
       <a class="page-link"
-        href="berita.php?katakunci=<?php echo $katakunci ?>&cari=<?php echo $cari ?>&page=<?php echo $i ?>">
+        href="crud_berita.php?katakunci=<?php echo $katakunci ?>&cari=<?php echo $cari ?>&page=<?php echo $i ?>">
         <?php
 
           echo $no++ ?>

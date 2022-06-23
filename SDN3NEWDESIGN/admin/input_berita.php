@@ -58,7 +58,7 @@ if (isset($_POST['simpan'])) {
 ?>
 <h1>Halaman Admin Input Berita</h1>
 <div class="mb-3 row">
-  <a href="berita.php">
+  <a href="crud_berita.php">
     << Kembali ke Halaman Berita</a>
 </div>
 
