@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 if ($_FILES['file']['name']) {
    if (!$_FILES['file']['error']) {
@@ -12,8 +11,7 @@ if ($_FILES['file']['name']) {
    } else {
       echo  $message = 'Ooops!  Your upload triggered the following error:  ' . $_FILES['file']['error'];
    }
-}
-=======
+
 <?php
 if ($_FILES['file']['name']) {
  if (!$_FILES['file']['error']) {
@@ -31,4 +29,3 @@ if ($_FILES['file']['name']) {
  }
 }
 ?>
->>>>>>> 769fcf9918192893ee456d70518fc29dabfff80c

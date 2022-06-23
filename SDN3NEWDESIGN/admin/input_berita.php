@@ -17,8 +17,8 @@ if ($id != "") {
   $sql1       = "select * from tb_berita where id = '$id'";
   $q1         = mysqli_query($koneksi, $sql1);
   $r1         = mysqli_fetch_array($q1);
-  $judul      = $r1['$judul'];
-  $gambar     = $r1['$gambar'];
+  $judul      = $r1['judul'];
+  $gambar     = $r1['gambar'];
   $deskripsi  = $r1['deskripsi'];
 
   if ($judul == '') {
@@ -42,7 +42,7 @@ if (isset($_POST['simpan'])) {
   // Fungsi untuk memasukan data ke database phpmyadmin
   if (empty($error)) {
     if ($id != "") {
-      $sql1 = "update berita set judul = '$judul', gambar = '$gambar', deskripsi = '$deskripsi', tgl_isi=now() where id = '$id'";
+      $sql1 = "update tb_berita set judul = '$judul', gambar = '$gambar', deskripsi = '$deskripsi' where id = '$id'";
     } else {
       $sql1       = "insert into tb_berita(judul,gambar,deskripsi) values('$judul', '$gambar', '$deskripsi')";
     }

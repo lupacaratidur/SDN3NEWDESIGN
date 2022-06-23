@@ -93,9 +93,11 @@ if ($sukses) {
       <td><?php echo $r1['gambar'] ?></td>
       <td><?php echo $r1['deskripsi'] ?></td>
       <td>
+
         <a href="input_berita.php?id=<?php echo $r1['id'] ?>">
           <span class="badge bg-warning" style="color: #000;">Edit</span>
         </a>
+
         <!-- konfirmasi hapus data menggunakan alert -->
         <a href="berita.php?op=delete&id=<?php echo $r1['id']  ?>"
           onclick="return confirm('Apakah yakin ingin hapus data?')">
