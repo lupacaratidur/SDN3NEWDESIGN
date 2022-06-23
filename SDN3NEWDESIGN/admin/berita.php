@@ -10,7 +10,7 @@ if (isset($_GET['op'])) {
 }
 if ($op == 'delete') {
   $id = $_GET['id'];
-  $sql1 = "delete from tb_berita where id = $id";
+  $sql1 = "delete from tb_berita where id = '$id'";
   $q1   = mysqli_query($koneksi, $sql1);
   if ($q1) {
     $sukses   = "Berhasil hapus data!";
@@ -61,6 +61,7 @@ if ($sukses) {
   <tbody>
     <?php
     $sqltambahan = "";
+    $per_berita  = 2;
     //  Fungsi Cari
     if ($katakunci != '') {
       $array_katakunci = explode(" ", $katakunci);
@@ -71,6 +72,7 @@ if ($sukses) {
     }
 
     // Fungsi untuk menampilkan apa yang telah diinput di input_berita.php
+
     $sql1       = "select * from tb_berita $sqltambahan";
     $page       = isset($_GET['page']) ? (int)$_GET['page'] : 1;
     $mulai      = ($page > 1) ? ($page * $per_berita) - $per_berita : 0;
@@ -91,8 +93,9 @@ if ($sukses) {
       <td><?php echo $r1['gambar'] ?></td>
       <td><?php echo $r1['deskripsi'] ?></td>
       <td>
-        <span class="badge bg-warning" style="color: #000;">Edit</span>
-
+        <a href="input_berita.php?id=<?php echo $r1['id'] ?>">
+          <span class="badge bg-warning" style="color: #000;">Edit</span>
+        </a>
         <!-- konfirmasi hapus data menggunakan alert -->
         <a href="berita.php?op=delete&id=<?php echo $r1['id']  ?>"
           onclick="return confirm('Apakah yakin ingin hapus data?')">
@@ -110,20 +113,30 @@ if ($sukses) {
   </tbody>
 
 </table>
-
 <nav aria-label="Page navigation example">
   <ul class="pagination">
     <?php
+    $no = 1;
     $cari = (isset($_GET['cari'])) ? $_GET['cari'] : "";
     for ($i = 1; $i <= $pages; $i++) {
     ?>
     <li class="page-item">
       <a class="page-link"
-        href="berita.php?katakunci=<?php echo $katakunci ?>&cari=<?php echo $cari ?>&page=<?php echo $i ?>"></a>
+        href="berita.php?katakunci=<?php echo $katakunci ?>&cari=<?php echo $cari ?>&page=<?php echo $i ?>">
+        <?php
+
+          echo $no++ ?>
+
+
+      </a>
     </li>
     <?php
     }
     ?>
   </ul>
 </nav>
+
+
+
+
 <?php include("inc_footer.php") ?>

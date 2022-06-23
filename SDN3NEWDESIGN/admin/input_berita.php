@@ -7,27 +7,53 @@ $deskripsi    = "";
 $error        = "";
 $sukses       = "";
 
+if (isset($_GET['id'])) {
+  $id     = $_GET['id'];
+} else {
+  $id = "";
+}
+
+if ($id != "") {
+  $sql1       = "select * from tb_berita where id = '$id'";
+  $q1         = mysqli_query($koneksi, $sql1);
+  $r1         = mysqli_fetch_array($q1);
+  $judul      = $r1['$judul'];
+  $gambar     = $r1['$gambar'];
+  $deskripsi  = $r1['deskripsi'];
+
+  if ($judul == '') {
+    $error = "Data tidak ditemukan";
+  }
+}
+
 // untuk menyimpan semua yang di input
 if (isset($_POST['simpan'])) {
-    $judul           = $_POST['judul'];
-    $gambar          = $_POST['gambar'];
-    $deskripsi       = $_POST['deskripsi'];
+  $judul           = $_POST['judul'];
+  $gambar          = $_POST['gambar'];
+  $deskripsi       = $_POST['deskripsi'];
 
-    // jika tidak ada yang diinputkan tetapi menekan tombol simpan, maka akan terjadi error
-    if ($judul == '' or $deskripsi == '' or $gambar == '') {
-        $error      = "Silahkan Masukan Judul dan Deskripsi";
+  // jika tidak ada yang diinputkan tetapi menekan tombol simpan, maka akan terjadi error
+  if ($judul == '' or $deskripsi == '' or $gambar == '') {
+    $error      = "Silahkan Masukan Judul dan Deskripsi";
+  }
+
+
+
+  // Fungsi untuk memasukan data ke database phpmyadmin
+  if (empty($error)) {
+    if ($id != "") {
+      $sql1 = "update berita set judul = '$judul', gambar = '$gambar', deskripsi = '$deskripsi', tgl_isi=now() where id = '$id'";
+    } else {
+      $sql1       = "insert into tb_berita(judul,gambar,deskripsi) values('$judul', '$gambar', '$deskripsi')";
     }
 
-    // Fungsi untuk memasukan data ke database phpmyadmin
-    if (empty($error)) {
-        $sql1       = "insert into tb_berita(judul,gambar,deskripsi) values('$judul', '$gambar', '$deskripsi')";
-        $q1         = mysqli_query($koneksi, $sql1);
-        if ($q1) {
-            $sukses     = "Sukses memasukan data";
-        } else {
-            $error      = "gagal memasukan data";
-        }
+    $q1         = mysqli_query($koneksi, $sql1);
+    if ($q1) {
+      $sukses     = "Sukses memasukan data";
+    } else {
+      $error      = "gagal memasukan data";
     }
+  }
 }
 ?>
 <h1>Halaman Admin Input Berita</h1>
@@ -72,7 +98,7 @@ if ($sukses) {
   <div class="mb-3 row">
     <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
     <div class="col-sm-10">
-      <textarea name="deskripsi" class="form-control" id="summernote"> <?php echo $deskripsi ?> </textarea>
+      <textarea name="deskripsi" class="form-control" id="deskripsi"> <?php echo $deskripsi ?> </textarea>
     </div>
   </div>
   <div class="mb-3 row">
