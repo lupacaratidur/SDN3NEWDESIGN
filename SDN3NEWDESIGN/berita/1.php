@@ -83,9 +83,8 @@ include_once("../inc/inc_fungsi.php");
             </div>
             <div class="row">
               <div class="col-md-5">
-                <?php echo ambil_gambar('5') ?>
-                <img src="../assets/img/upload_an/58a2fc6ed39fd083f55d4182bf88826d.jpg" class="img-fluid"
-                  alt="pemanfaatan.png">
+                <?php echo ambil_gambar('11') ?>
+                <img src="" class="img-fluid" alt="pemanfaatan.png">
               </div>
             </div>
             <div class="row mt-3">
