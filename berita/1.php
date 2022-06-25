@@ -83,7 +83,7 @@ include_once("../inc/inc_fungsi.php");
             </div>
             <div class="row">
               <div class="col-md-5">
-                <?php echo ambil_gambar('11') ?>
+                <?php echo ambil_gambar('10') ?>
                 <img src="" class="img-fluid" alt="pemanfaatan.png">
               </div>
             </div>

@@ -74,8 +74,8 @@
           <div class="row d-flex justify-content-center p-3">
             <div class="col-md-4 col-md-offset-5 p-3">
               <div class="card-berita-2" style="width: 18rem;">
-                <a href="berita/1.php"><img src="assets/img/berita/fishman.jpg" class="card-img-top"
-                    alt="pemanfaatan.png"></a>
+                <a href="berita/1.php">
+                  <img src="" class="card-img-top" alt="pemanfaatan.png"></a>
                 <div class="card-body">
                   <p> 1 second ago </p>
                   <h6 class="card-title-2">PEMANFAATAN BANTUAN TIK UNTUK KEGIATAN ASESMEN</h6>

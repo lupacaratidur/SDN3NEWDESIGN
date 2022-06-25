@@ -1,11 +1,11 @@
 <?php
-// function url_dasar()
-// {
-//   // $_SERVER['SERVER_NAME'] : untuk nama alamat websitenya
-//   // dirname($_SERVER['SCRIPT_NAME']) : untuk direktori website,misalkan sdn3.com/berita/
-//   $url_dasar = "http://" . $_SERVER['SERVER_NAME'] . dirname($_SERVER['SCRIPT_NAME']);
-//   return $url_dasar;
-//}
+function url_dasar()
+{
+  // $_SERVER['SERVER_NAME'] : untuk nama alamat websitenya
+  // dirname($_SERVER['SCRIPT_NAME']) : untuk direktori website,misalkan sdn3.com/berita/
+  $url_dasar = "http://" . $_SERVER['SERVER_NAME'] . dirname($_SERVER['SCRIPT_NAME']);
+  return $url_dasar;
+}
 function ambil_gambar($id_gambar)
 {
   global $koneksi;
@@ -16,6 +16,7 @@ function ambil_gambar($id_gambar)
 
   preg_match('/< *img[^>]*src *= *["\']?([^"\']*)/i', $text, $img);
   $gambar = $img[1];
+  $gambar = str_replace("../berita/upload_an/", url_dasar() . "/berita/upload_an/", $gambar);
 
 
   return $gambar;
