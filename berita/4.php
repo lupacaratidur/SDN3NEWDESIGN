@@ -18,11 +18,7 @@ include_once("../inc/inc_fungsi.php");
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
+  <link!-- Vendor CSS Files -->
   <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -61,11 +57,9 @@ include_once("../inc/inc_fungsi.php");
               <li><a href="../galeri/galerividio.php">Galeri Vidio</a></li>
             </ul>
           </li>
-          <li><a style="background: #F63854; border-radius: 5px; color: #fff;" class="nav-link scrollto"
-              href="../login/login.php">Login</a></li>
+          <li><a style="background: #F63854; border-radius: 5px; color: #fff;" class="nav-link scrollto" href="../login/login.php">Login</a></li>
         </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+        <i class="bi bi-list mobile-nav-toggle"></i>/-- .navbar -->
     </div>
   </header><!-- End Header -->
 
@@ -126,12 +120,10 @@ include_once("../inc/inc_fungsi.php");
           <div class="col-lg-4">
             <div class="row mb-4">
               <div class="col-sm-5">
-                <a href="1.php"><img src="../assets/img/berita/impeldown.jpg" class="img-thumbnail"
-                    alt="pemanfaatan.png"></a>
+                <a href="1.php"><img src="../assets/img/berita/impeldown.jpg" class="img-thumbnail" alt="pemanfaatan.png"></a>
               </div>
               <div class="col-sm-7">
-                <p class="text-muted mb-1" style="font-size: 10px; text-align: right;"><b> 1 second ago </b>
-                </p>
+                <p class="text-muted mb-1" style="font-size: 10px; text-align: right;"><b> 1 second 
                 <p style="font-size: 12px; font-weight: 600; margin-bottom: 2px;"><a href="1.php"><b>PEMANFAATAN
                       BANTUAN TIK UNTUK KEGIATAN ASESMEN</b></a></p>
                 <p style="font-size: 10px; margin-bottom: 2px ;">Lorem ipsum dolor sit amet, consectetur
@@ -143,13 +135,11 @@ include_once("../inc/inc_fungsi.php");
             </div>
             <div class="row mb-4">
               <div class="col-sm-5">
-                <a href="2.php"><img src="../assets/img/berita/marinford.jpg" class="img-thumbnail"
-                    alt="sambutsiswa.png"></a>
+                <a href="2.php"><img src="../assets/img/berita/marinford.jpg" class="img-thumbnail" alt="sambutsiswa.png"></a>
               </div>
               <div class="col-sm-7">
                 <p class="text-muted mb-1" style="font-size: 10px; text-align: right;"><b> 1 second ago </b>
-                </p>
-                <p style="font-size: 12px; font-weight: 600; margin-bottom: 2px;"><a href="2.php"><b>KEGIATAN
+                </p> tyle="font-size: 12px; font-weight: 600; margin-bottom: 2px;"><a href="2.php"><b>KEGIATAN
                       PEMBIASAAN MENYAMBUT SISWA</b></a></p>
                 <p style="font-size: 10px; margin-bottom: 2px ;">Lorem ipsum dolor sit amet, consectetur
                   adipiscing...</p>
@@ -241,14 +231,12 @@ include_once("../inc/inc_fungsi.php");
   </footer><!-- End Footer -->
 
   <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="../assets/vendor/purecounter/purecounter.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
-  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>ript src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>

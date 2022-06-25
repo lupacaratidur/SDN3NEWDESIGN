@@ -40,29 +40,29 @@ include_once("inc/inc_fungsi.php");
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a href="index.html">SD Negeri 3 Purwokerto Kidul<span>.</span></a></h1>
+      <h1 class="logo"><a href="index.php">SD Negeri 3 Purwokerto Kidul<span>.</span></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
+      <!-- <a href="index.php" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
 
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link active" href="#beranda">Beranda</a></li>
           <li class="dropdown"><a href="#"><span>Profil</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="profil/visimisi.html">VISI dan MISI</a></li>
-              <li><a href="profil/guruguru.html">GURU</a></li>
+              <li><a href="profil/visimisi.php">VISI dan MISI</a></li>
+              <li><a href="profil/guruguru.php">GURU</a></li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="fasilitas/fasilitas.html">Fasilitas</a></li>
-          <li><a class="nav-link scrollto" href="berita.html">Berita</a></li>
+          <li><a class="nav-link scrollto" href="fasilitas/fasilitas.php">Fasilitas</a></li>
+          <li><a class="nav-link scrollto" href="berita.php">Berita</a></li>
           <li class="dropdown"><a href="#"><span>Galeri</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="galeri/galerifoto.html">Galeri Foto</a></li>
-              <li><a href="galeri/galerividio.html">Galeri Vidio</a></li>
+              <li><a href="galeri/galerifoto.php">Galeri Foto</a></li>
+              <li><a href="galeri/galerividio.php">Galeri Vidio</a></li>
             </ul>
           </li>
           <li><a style="background: #F63854; border-radius: 5px; color: #fff;" class="nav-link scrollto"
-              href="login/login.html">Login</a></li>
+              href="login/login.php">Login</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -75,7 +75,7 @@ include_once("inc/inc_fungsi.php");
       <h1>TANGGUL TAMAN BUDAYA<span>.</span></h1>
       <h2>Taqwa, Unggul, Berprestasi, Mandiri, Berbudi luhur, dan Berdaya</h2>
       <div class="d-flex">
-        <a href="Pendaftaran.html" class="btn-get-started scrollto">Pendaftaran Peserta Didik Baru</a>
+        <a href="Pendaftaran.php" class="btn-get-started scrollto">Pendaftaran Peserta Didik Baru</a>
       </div>
     </div>
   </section><!-- End Hero -->
@@ -217,7 +217,7 @@ include_once("inc/inc_fungsi.php");
             <div class="text-center">
               <img src="assets/img/prestasi/Piala.png" width="150">
             </div>
-            <h5 class="juara-title mt-3"><a href="index.html">JUARA 2 SEPAK BOLA TINGKAT KABUPATEN</a></h5>
+            <h5 class="juara-title mt-3"><a href="index.php">JUARA 2 SEPAK BOLA TINGKAT KABUPATEN</a></h5>
           </div>
         </div>
         <div class="col-md-4">
@@ -225,7 +225,7 @@ include_once("inc/inc_fungsi.php");
             <div class="text-center">
               <img src="assets/img/prestasi/Piala.png" width="150">
             </div>
-            <h5 class="juara-title mt-3"><a href="index.html">JUARA 1 LOMBA MELUKIS TINGKAT KABUPATEN</a></h5>
+            <h5 class="juara-title mt-3"><a href="index.php">JUARA 1 LOMBA MELUKIS TINGKAT KABUPATEN</a></h5>
           </div>
         </div>
         <div class="col-md-4">
@@ -233,7 +233,7 @@ include_once("inc/inc_fungsi.php");
             <div class="text-center">
               <img src="assets/img/prestasi/Piala.png" width="150">
             </div>
-            <h5 class="juara-title mt-3"><a href="index.html">JUARA 2 SENI TARI TINGKAT KECAMATAN</a></h5>
+            <h5 class="juara-title mt-3"><a href="index.php">JUARA 2 SENI TARI TINGKAT KECAMATAN</a></h5>
           </div>
         </div>
 
@@ -243,7 +243,7 @@ include_once("inc/inc_fungsi.php");
             <div class="text-center">
               <img src="assets/img/prestasi/Piala.png" width="150">
             </div>
-            <h5 class="juara-title mt-3"><a href="index.html">JUARA 2 SEPAK BOLA TINGKAT KABUPATEN</a></h5>
+            <h5 class="juara-title mt-3"><a href="index.php">JUARA 2 SEPAK BOLA TINGKAT KABUPATEN</a></h5>
           </div>
         </div>
         <div class="col-md-4">
@@ -251,7 +251,7 @@ include_once("inc/inc_fungsi.php");
             <div class="text-center">
               <img src="assets/img/prestasi/Piala.png" width="150">
             </div>
-            <h5 class="juara-title mt-3"><a href="index.html">JUARA 2 SEPAK BOLA TINGKAT KABUPATEN</a></h5>
+            <h5 class="juara-title mt-3"><a href="index.php">JUARA 2 SEPAK BOLA TINGKAT KABUPATEN</a></h5>
           </div>
         </div>
         <div class="col-md-4">
@@ -259,7 +259,7 @@ include_once("inc/inc_fungsi.php");
             <div class="text-center">
               <img src="assets/img/prestasi/Piala.png" width="150">
             </div>
-            <h5 class="juara-title mt-3"><a href="index.html">JUARA 2 SEPAK BOLA TINGKAT KABUPATEN</a></h5>
+            <h5 class="juara-title mt-3"><a href="index.php">JUARA 2 SEPAK BOLA TINGKAT KABUPATEN</a></h5>
           </div>
         </div>
       </div>
