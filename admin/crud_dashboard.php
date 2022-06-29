@@ -8,10 +8,17 @@ if (isset($_GET['op'])) {
 } else {
   $op = "";
 }
+
 if ($op == 'delete') {
   $id = $_GET['id'];
-  $sql1 = "delete from tb_berita where id = '$id'";
-  $q1   = mysqli_query($koneksi, $sql1);
+  $sql1 = "select foto from tb_berita where id = '$id'";
+  $q1         = mysqli_query($koneksi, $sql1);
+  $r1         = mysqli_fetch_array($q1);
+  @unlink("../berita/upload_an/" . $r1['foto']);
+
+  $sql1   = "delete from tb_berita where id = '$id'";
+  $q1     = mysqli_query($koneksi, $sql1);
+
   if ($q1) {
     $sukses   = "Berhasil hapus data!";
   }
@@ -19,7 +26,7 @@ if ($op == 'delete') {
 ?>
 <!-- sampe sini -->
 
-<h1>CRUD BERITA</h1>
+<h1>CRUD DASHBOARD</h1>
 <p>
   <a href="input_berita.php">
     <input type="button" class="btn btn-primary" value="Buat Berita Baru" />
@@ -51,9 +58,9 @@ if ($sukses) {
   <thead>
     <tr>
       <th class="col-1">#</th>
-      <th>Judul</th>
-      <th>Gambar</th>
-      <th>Deskripsi</th>
+      <th ">Judul</th>
+      <th class=" col-2">Foto</th>
+      <th>Isi</th>
       <th col-2>Aksi</th>
     </tr>
   </thead>
@@ -66,7 +73,7 @@ if ($sukses) {
     if ($katakunci != '') {
       $array_katakunci = explode(" ", $katakunci);
       for ($x = 0; $x < count($array_katakunci); $x++) {
-        $sqlcari[] = "(judul like '%" . $array_katakunci[$x] . "%' or deskripsi like '%" . $array_katakunci[$x] . "%' )";
+        $sqlcari[] = "(judul like '%" . $array_katakunci[$x] . "%' or isi like '%" . $array_katakunci[$x] . "%' )";
       }
       $sqltambahan = "where " . implode(" or ", $sqlcari);
     }
@@ -90,16 +97,17 @@ if ($sukses) {
     <tr>
       <td><?php echo $nomor++ ?></td>
       <td><?php echo $r1['judul'] ?></td>
-      <td><?php echo $r1['gambar'] ?></td>
-      <td><?php echo $r1['deskripsi'] ?></td>
+      <td><img src="../berita/upload_an/<?php echo ambil_foto($r1['id']) ?>" style="max-height:100px;max-width:100px" />
+      </td>
+      <td><?php echo $r1['isi'] ?></td>
       <td>
 
-        <a href="input_berita.php?id=<?php echo $r1['id'] ?>">
+        <a href=" input_berita.php?id=<?php echo $r1['id'] ?>">
           <span class="badge bg-warning" style="color: #000;">Edit</span>
         </a>
 
         <!-- konfirmasi hapus data menggunakan alert -->
-        <a href="crud_berita.php?op=delete&id=<?php echo $r1['id']  ?>"
+        <a href="crud_dashboard.php?op=delete&id=<?php echo $r1['id']  ?>"
           onclick="return confirm('Apakah yakin ingin hapus data?')">
           <span class="badge bg-danger">Delete</span>
         </a>
@@ -124,7 +132,7 @@ if ($sukses) {
     ?>
     <li class="page-item">
       <a class="page-link"
-        href="crud_berita.php?katakunci=<?php echo $katakunci ?>&cari=<?php echo $cari ?>&page=<?php echo $i ?>">
+        href="crud_dashboard.php?katakunci=<?php echo $katakunci ?>&cari=<?php echo $cari ?>&page=<?php echo $i ?>">
         <?php
 
           echo $no++ ?>

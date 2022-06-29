@@ -275,8 +275,8 @@ include_once("inc/inc_fungsi.php");
         <h2 class="fw-bold mb-5 text-center">Berita Acara Terbaru <br /></h2>
         <div class="row gx-lg-5 mb-5 align-items-center">
           <div class="col-md-6 mb-4 mb-md-0 hover-zoom">
-            <img src="<?php echo ambil_gambar('5') ?>" class="w-100 shadow-5-strong rounded-4 mb-4" alt=""
-              aria-controls="#picker-editor" draggable="false" />
+            <img src="berita/upload_an/<?php echo ambil_isi_berita('13', 'foto') ?>"
+              class="w-100 shadow-5-strong rounded-4 mb-4" alt="" aria-controls="#picker-editor" draggable="false" />
           </div>
           <div class="col-md-6 mb-4 mb-md-0">
             <h3 class="fw-bold">Peserta Juara Lomba Sepak Bola</h3>

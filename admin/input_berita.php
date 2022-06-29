@@ -2,8 +2,9 @@
 <?php
 // deklarasikan semua variabel agar tidak error
 $judul        = "";
-$gambar       = "";
-$deskripsi    = "";
+$foto         = "";
+$isi          = "";
+$foto_name    = "";
 $error        = "";
 $sukses       = "";
 
@@ -18,8 +19,8 @@ if ($id != "") {
   $q1         = mysqli_query($koneksi, $sql1);
   $r1         = mysqli_fetch_array($q1);
   $judul      = $r1['judul'];
-  $gambar     = $r1['gambar'];
-  $deskripsi  = $r1['deskripsi'];
+  $foto       = $r1['foto'];
+  $isi        = $r1['isi'];
 
   if ($judul == '') {
     $error = "Data tidak ditemukan";
@@ -29,22 +30,53 @@ if ($id != "") {
 // untuk menyimpan semua yang di input
 if (isset($_POST['simpan'])) {
   $judul           = $_POST['judul'];
-  $gambar          = $_POST['gambar'];
-  $deskripsi       = $_POST['deskripsi'];
+  $isi             = $_POST['isi'];
 
-  // jika tidak ada yang diinputkan tetapi menekan tombol simpan, maka akan terjadi error
-  if ($judul == '' or $deskripsi == '' or $gambar == '') {
-    $error      = "Silahkan Masukan Judul dan Deskripsi";
+  if ($judul == '' or $isi == '') {
+    $error     = "Silakan masukkan semua data yakni adalah data isi dan nama.";
+  }
+  // Array ( [foto] => Array ( [name] => [type] => [tmp_name] => [error] => 4 [size] => 0 ) )
+  // print_r($_FILES);
+  if ($_FILES['foto']['name']) {
+    $foto_name = $_FILES['foto']['name'];
+    $foto_file = $_FILES['foto']['tmp_name'];
+
+    $detail_file = pathinfo($foto_name);
+    $foto_ekstensi = $detail_file['extension'];
+    // Array ( [dirname] => . [basename] => Romi Satrio Wahono.jpg [extension] => jpg [filename] => Romi Satrio Wahono )
+    $ekstensi_yang_diperbolehkan = array("jpg", "jpeg", "png", "gif");
+    if (!in_array($foto_ekstensi, $ekstensi_yang_diperbolehkan)) {
+      $error = "Ekstensi yang diperbolehkan adalah jpg, jpeg, png dan gif";
+    }
   }
 
 
-
-  // Fungsi untuk memasukan data ke database phpmyadmin
   if (empty($error)) {
-    if ($id != "") {
-      $sql1 = "update tb_berita set judul = '$judul', gambar = '$gambar', deskripsi = '$deskripsi' where id = '$id'";
+    if ($foto_name) {
+      $direktori = "../berita/upload_an/";
+
+      @unlink($direktori . "/$foto"); //delete data
+
+      $foto_name = "berita_" . time() . "_" . $foto_name;
+      move_uploaded_file($foto_file, $direktori . "/" . $foto_name);
+
+      $foto = $foto_name;
     } else {
-      $sql1       = "insert into tb_berita(judul,gambar,deskripsi) values('$judul', '$gambar', '$deskripsi')";
+      $foto_name = $foto; //memasukkan data dari data yang sebelumnya ada
+    }
+
+
+
+    // jika tidak ada yang diinputkan tetapi menekan tombol simpan, maka akan terjadi error
+    if ($judul == '' or $isi == '' or $foto == '') {
+      $error      = "Silahkan Masukan Judul dan isi";
+    }
+
+    // Fungsi untuk memasukan data ke database phpmyadmin
+    if ($id != "") {
+      $sql1 = "update tb_berita set judul = '$judul', foto = '$foto', isi = '$isi' where id = '$id'";
+    } else {
+      $sql1       = "insert into tb_berita(judul,foto,isi) values('$judul', '$foto', '$isi')";
     }
 
     $q1         = mysqli_query($koneksi, $sql1);
@@ -55,10 +87,12 @@ if (isset($_POST['simpan'])) {
     }
   }
 }
+
+
 ?>
 <h1>Halaman Admin Input Berita</h1>
 <div class="mb-3 row">
-  <a href="crud_berita.php">
+  <a href="crud_dashboard.php">
     << Kembali ke Halaman Berita</a>
 </div>
 
@@ -82,7 +116,7 @@ if ($sukses) {
 }
 ?>
 
-<form action="" method="post">
+<form action="" method="post" enctype="multipart/form-data">
   <div class="mb-3 row">
     <label for="judul" class="col-sm-2 col-form-label">Judul</label>
     <div class="col-sm-10">
@@ -90,15 +124,20 @@ if ($sukses) {
     </div>
   </div>
   <div class="mb-3 row">
-    <label for="gambar" class="col-sm-2 col-form-label">Gambar</label>
+    <label for="foto" class="col-sm-2 col-form-label">Foto</label>
     <div class="col-sm-10">
-      <textarea name="gambar" class="form-control" id="summernote"> <?php echo $gambar ?> </textarea>
+      <?php
+      if ($foto) {
+        echo "<img src='../berita/upload_an/$foto' style='max-height:100px;max-width:100px'/>";
+      }
+      ?>
+      <input type="file" class="form-control" id="foto" name="foto">
     </div>
   </div>
   <div class="mb-3 row">
-    <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
+    <label for="isi" class="col-sm-2 col-form-label">Isi</label>
     <div class="col-sm-10">
-      <textarea name="deskripsi" class="form-control" id="deskripsi"> <?php echo $deskripsi ?> </textarea>
+      <textarea name="isi" class="form-control" id="summernote"> <?php echo $isi ?> </textarea>
     </div>
   </div>
   <div class="mb-3 row">

@@ -1,5 +1,5 @@
 <?php
-$files = array_filter(glob('../assets/img/upload_an/*'), 'is_file');
+$files = array_filter(glob('../berita/upload_an/*'), 'is_file');
 
 $response = [];
 

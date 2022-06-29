@@ -77,47 +77,20 @@ include_once("../inc/inc_fungsi.php");
           <div class="col-md-8">
             <div class="row mb-3">
               <div class="col-md-11">
-                <p style="font-size: 30px; font-weight: 600;"><b>PEMANFAATAN BANTUAN TIK UNTUK KEGIATAN
-                    ASESMEN</b></p>
+                <p style="font-size: 30px; font-weight: 600;"><b>
+                    <?php echo ambil_isi_berita('13', 'judul') ?>
+                  </b></p>
               </div>
             </div>
             <div class="row">
               <div class="col-md-5">
-                <?php echo ambil_gambar('10') ?>
-                <img src="" class="img-fluid" alt="pemanfaatan.png">
+                <img src="upload_an/<?php echo ambil_isi_berita('13', 'foto') ?>" />
               </div>
             </div>
             <div class="row mt-3">
               <div class="col-md-11">
-                <p style="text-justify: inter-word; text-align: justify;">Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit. Mauris ullamcorper nisl id nisl. In turpis pretium orci
-                  orci. Enim sit varius sem amet, nunc pharetra quam volutpat non. Mi habitant gravida non
-                  leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ullamcorper nisl id
-                  nisl. In turpis pretium orci orci. Enim sit varius sem amet, nunc pharetra quam volutpat
-                  non. Mi habitant gravida non leo.Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit.
-
-                  In turpis pretium orci orci. Enim sit varius sem amet, nunc pharetra quam volutpat non.
-                  Mi habitant gravida non leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Mauris ullamcorper nisl id nisl. In turpis pretium orci orci. Enim sit varius sem amet,
-                  nunc pharetra quam volutpat non. Mi habitant gravida non leo.Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit. Mauris ullamcorper nisl id nisl. In turpis pretium orci
-                  orci. Enim sit varius sem amet, nunc pharetra quam volutpat non. Mi habitant gravida non
-                  leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ullamcorper nisl id
-                  nisl. In turpis pretium orci orci. Enim sit varius sem amet, nunc pharetra quam volutpat
-                  non. Mi habitant gravida non leo.Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit. Mauris ullamcorper nisl id nisl. In turpis pretium orci orci. Enim sit varius sem
-                  amet, nunc pharetra quam volutpat non. Mi habitant gravida non leo.Lorem ipsum dolor sit
-                  amet, consectetur adipiscing elit. Mauris ullamcorper nisl id nisl. In turpis pretium
-                  orci orci. Enim sit varius sem amet, nunc pharetra quam volutpat non. Mi habitant
-                  gravida non leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-                  ullamcorper nisl id nisl. In turpis pretium orci orci. Enim sit varius sem amet, nunc
-                  pharetra quam volutpat non. Mi habitant gravida non leo.Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit. Mauris ullamcorper nisl id nisl. In turpis pretium orci
-                  orci. Enim sit varius sem amet, nunc pharetra quam volutpat non. Mi habitant gravida non
-                  leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ullamcorper nisl id
-                  nisl. In turpis pretium orci orci. Enim sit varius sem amet, nunc pharetra quam volutpat
-                  non. Mi habitant gravida non leo</p>
+                <p style="text-justify: inter-word; text-align: justify;"> <?php echo ambil_isi_berita('13', 'isi') ?>
+                </p>
               </div>
 
             </div>
