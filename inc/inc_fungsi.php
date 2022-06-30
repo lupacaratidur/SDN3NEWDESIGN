@@ -107,6 +107,21 @@ function ambil_foto($id)
   }
 }
 
+function ambil_foto_pendaftar($id)
+{
+  global $koneksi;
+  $sql1   = "select * from tb_berita where id = '$id'";
+  $q1     = mysqli_query($koneksi, $sql1);
+  $r1     = mysqli_fetch_array($q1);
+  $foto   = $r1['foto'];
+
+  if ($foto) {
+    return $foto;
+  } else {
+    return 'default_user.png';
+  }
+}
+
 
 function ambil_isi_berita($id, $kolom)
 {
