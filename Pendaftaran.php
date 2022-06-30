@@ -32,6 +32,82 @@
 </head>
 
 <body>
+
+  <!-- deklarasi variabel -->
+  <?php
+  $nama_peserta  = '';
+  $nik = '';
+  $alamat  = '';
+  $nama_ibu  = '';
+  $nama_ayah  = '';
+  $foto_kk  = '';
+  $foto_akta  = '';
+  $sukses  = '';
+  $error  = '';
+
+  if (isset($_GET['id'])) {
+    $id     = $_GET['id'];
+  } else {
+    $id = "";
+  }
+
+  if ($id != "") {
+    $sql1       = "select * from tb_pendaftaran where id = '$id'";
+    $q1         = mysqli_query($koneksi, $sql1);
+    $r1         = mysqli_fetch_array($q1);
+    $nama_peserta  = $r1['nama_peserrta'];
+    $nik           = $r1['nik'];
+    $alamat        = $r1['alamat'];
+    $nama_ibu      = $r1['nama_ibu'];
+    $nama_ayah     = $r1['nama_ayah'];
+    $foto_kk       = $r1['foto_kk'];
+    $foto_akta     = $r1['foto_akta'];
+
+    if ($nama_peserta == '') {
+      $error = "Data tidak ditemukan";
+    }
+  }
+
+  if (isset($_POST['simpan'])) {
+    $nama_peserta  = $_POST['nama_peserrta'];
+    $nik           = $_POST['nik'];
+    $alamat        = $_POST['alamat'];
+    $nama_ibu      = $_POST['nama_ibu'];
+    $nama_ayah     = $_POST['nama_ayah'];
+    $foto_kk       = $_POST['foto_kk'];
+    $foto_akta     = $_POST['foto_akta'];
+
+    if ($nama_peserta == '' or $nik == '' or $alamat == '' or $nama_ibu == '' or $nama_ayah == '' or $foto_kk == '' or $foto_akta == '') {
+      $error     = "Silakan masukkan semua data.";
+    }
+  }
+
+
+  if ($nama_peserta == '' or $nik == '' or $alamat == '' or $nama_ibu == '' or $nama_ayah == '' or $foto_kk == '' or $foto_akta == '') {
+    $error      = "Dimohon untuk memasukan data";
+  }
+
+  // Fungsi untuk memasukan data ke database phpmyadmin
+  if ($id != "") {
+    $sql1 = "update tb_pendaftaran set nama_peserta = '$nama_peserta', nik = '$nik', alamat = '$alamat', nama_ibu = '$nama_ibu', nama_ayah = '$nama_ayah', foto_kk = '$foto_kk', foto_akta = '$foto_akta' where id = '$id'";
+  } else {
+    $sql1       = "insert into tb_pendaftaran(nama_peserta, nik, alamat, nama_ibu, nama_ayah, foto_kk, foto_akta) values('$nama_peserta', '$nik', '$alamat', '$nama_ibu', '$nama_ayah', '$foto_kk', '$foto_akta')";
+  }
+
+  $q1         = mysqli_query($koneksi, $sql1);
+  if ($q1) {
+    $sukses     = "Sukses memasukan data";
+  } else {
+    $error      = "gagal memasukan data";
+  }
+
+
+
+
+  ?>
+
+
+
   <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
@@ -65,6 +141,28 @@
     </div>
   </header><!-- End Header -->
 
+  </div>
+
+  <?php
+  if ($error) {
+  ?>
+  <div class="alert alert-danger" role="alert">
+    <?php echo $error ?>
+  </div>
+  <?php
+  }
+  ?>
+
+  <?php
+  if ($sukses) {
+  ?>
+  <div class="alert alert-primary" role="alert">
+    <?php echo $sukses ?>
+  </div>
+  <?php
+  }
+  ?>
+
   <!-- DAFTAR -->
 
   <div style="margin-top: 130px"></div>
@@ -74,39 +172,41 @@
       <form action="pendaftaran.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="_token" value="7IIcpiEmlesCd80RFffhh446DsfN8LDaA8tYrdDH">
         <div class="form-floating">
-          <input type="text" name="nama" class="form-control rounded-top mt-3" id="name" placeholder="Name">
+          <input type="text" name="nama" class="form-control rounded-top mt-3" id="nama_peserta" "
+            placeholder=" Name">
           <label for="name">Nama Peserta Didik</label>
         </div>
         <div class="form-floating">
-          <input type="text" name="nik" class="form-control mt-3" id="username" placeholder="NIK">
+          <input type="text" name="nik" class="form-control mt-3" id="nik" placeholder="NIK">
           <label for="username">NIK</label>
         </div>
         <div class="form-floating">
-          <input type="text" name="alamat" class="form-control mt-3" id="email" placeholder="Alamat">
+          <input type="text" name="alamat" class="form-control mt-3" id="alamat" placeholder="Alamat">
           <label for="email">Alamat</label>
         </div>
 
         <div class="form-floating">
-          <input type="text" name="nama_ibu" class="form-control mt-3" id="email" placeholder="Nama Ibu">
+          <input type="text" name="nama_ibu" class="form-control mt-3" id="nama_ibu" "
+            placeholder=" Nama Ibu">
           <label for="email">Nama Ibu</label>
         </div>
 
         <div class="form-floating">
-          <input type="text" name="nama_ayah" class="form-control mt-3" id="email" placeholder="Nama Ayah">
+          <input type="text" name="nama_ayah" class="form-control mt-3" id="nama_ayah" placeholder="Nama Ayah">
           <label for="email">Nama Ayah</label>
         </div>
         <div class="mb-3">
           <label for="formFile" class="form-label mt-3">Foto Kartu Keluarga</label>
-          <input class="form-control" name="file_kk" type="file" id="formFile">
+          <input class="form-control" name="file_kk" type="file" id="foto_kk" ">
         </div>
 
-        <div class="mb-3">
+        <div class=" mb-3">
           <label for="formFile" class="form-label mt-3">Foto Akta Kelahiran</label>
-          <input class="form-control" name="file_akta_kelahiran" type="file" id="formFile">
+          <input class="form-control" name="file_akta_kelahiran" type="file" id="fotoa-akta" ">
         </div>
 
-        <button style="background: #F63854; color: #fff;" class="w-100 btn btn-lg mt-4 mb-4"
-          type="submit">Register</button>
+        <button style=" background: #F63854; color: #fff;" class="w-100 btn btn-lg mt-4 mb-4"
+            type="submit">Register</button>
       </form>
     </div>
 
