@@ -14,7 +14,9 @@
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
@@ -132,7 +134,8 @@
               <li><a href="galeri/galerividio.php">Galeri Vidio</a></li>
             </ul>
           </li>
-          <li><a style="background: #F63854; border-radius: 5px; color: #fff;" class="nav-link scrollto" href="login/login.php">Login</a></li>
+          <li><a style="background: #F63854; border-radius: 5px; color: #fff;" class="nav-link scrollto"
+              href="login/login.php">Login</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -144,9 +147,9 @@
   <?php
   if ($error) {
   ?>
-    <div class="alert alert-danger" role="alert">
-      <?php echo $error ?>
-    </div>
+  <div class="alert alert-danger" role="alert">
+    <?php echo $error ?>
+  </div>
   <?php
   }
   ?>
@@ -154,9 +157,9 @@
   <?php
   if ($sukses) {
   ?>
-    <div class="alert alert-primary" role="alert">
-      <?php echo $sukses ?>
-    </div>
+  <div class="alert alert-primary" role="alert">
+    <?php echo $sukses ?>
+  </div>
   <?php
   }
   ?>
@@ -170,15 +173,17 @@
       <form action="pendaftaran.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="_token" value="7IIcpiEmlesCd80RFffhh446DsfN8LDaA8tYrdDH">
         <div class="form-floating">
-          <input type="text" name="nama" class="form-control rounded-top mt-3" id="nama_peserta" placeholder=" Name" value="<?php echo $nama_peserta ?>">
+          <input type="text" name="nama" class="form-control rounded-top mt-3" id="nama_peserta" placeholder=" Name"
+            value="<?php echo $nama_peserta ?>">
           <label for="name">Nama Peserta Didik</label>
         </div>
         <div class="form-floating">
-          <input type="text" name="nik" class="form-control mt-3" value="<?php echo $nik ?> id=" nik" placeholder="NIK">
+          <input type="text" name="nik" class="form-control mt-3" value="<?php echo $nik ?> placeholder=" nik">
           <label for="username">NIK</label>
         </div>
         <div class="form-floating">
-          <input type="text" name="alamat" class="form-control mt-3" value="<?php echo $alamat ?> id=" alamat" placeholder="Alamat">
+          <input type="text" name="alamat" class="form-control mt-3" value="<?php echo $alamat ?> 
+            placeholder=" Alamat">
           <label for="email">Alamat</label>
         </div>
 
@@ -212,7 +217,8 @@
           <input class="form-control" name="file_akta_kelahiran" type="file" id="fotoa-akta" ">
         </div>
 
-        <button style=" background: #F63854; color: #fff;" class="w-100 btn btn-lg mt-4 mb-4" type="submit">Register</button>
+        <button style=" background: #F63854; color: #fff;" class="w-100 btn btn-lg mt-4 mb-4"
+            type="submit">Register</button>
       </form>
     </div>
 
@@ -230,7 +236,8 @@
   </footer><!-- End Footer -->
 
   <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="../assets/vendor/purecounter/purecounter.js"></script>

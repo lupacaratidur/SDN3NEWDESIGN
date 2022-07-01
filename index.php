@@ -75,7 +75,7 @@ include_once("inc/inc_fungsi.php");
       <h1>TANGGUL TAMAN BUDAYA<span>.</span></h1>
       <h2>Taqwa, Unggul, Berprestasi, Mandiri, Berbudi luhur, dan Berdaya</h2>
       <div class="d-flex">
-        <a href="Pendaftaran.php" class="btn-get-started scrollto">Pendaftaran Peserta Didik Baru</a>
+        <a href="admin/input_pendaftaran.php" class="btn-get-started scrollto">Pendaftaran Peserta Didik Baru</a>
       </div>
     </div>
   </section><!-- End Hero -->

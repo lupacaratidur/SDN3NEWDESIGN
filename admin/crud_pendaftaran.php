@@ -184,12 +184,12 @@ include("../inc/inc_fungsi.php");
 
         $sql1       = "select * from tb_pendaftaran $sqltambahan";
         $page       = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-        $mulai      = ($page > 1) ? ($page * $per_berita) - $per_berita : 0;
+        $mulai      = ($page > 1) ? ($page * $per_pendaftar) - $per_pendaftar : 0;
         $q1         = mysqli_query($koneksi, $sql1);
         $total      = mysqli_num_rows($q1);
-        $pages      = ceil($total / $per_berita);
+        $pages      = ceil($total / $per_pendaftar);
         $nomor      = $mulai + 1;
-        $sql1       = $sql1 . " order by id desc limit $mulai,$per_berita";
+        $sql1       = $sql1 . " order by id desc limit $mulai,$per_pendaftar";
 
 
 
