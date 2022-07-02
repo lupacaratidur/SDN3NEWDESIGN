@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['admin_username']) != '') {
-  header("location:crud_berita.php");
+  header("location:index.php");
   exit();
 }
 include("../inc/inc_koneksi.php");
@@ -28,7 +28,7 @@ if (isset($_POST['login'])) {
       $err = "Password yang kamu masukkan tidak sesuai";
     } else {
       $_SESSION['admin_username']     = $username;
-      header("location:crud_berita.php");
+      header("location:index.php");
       exit();
     }
   }

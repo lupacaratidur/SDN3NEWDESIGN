@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("../inc/inc_koneksi.php");
 include("../inc/inc_fungsi.php");
 ?>
@@ -88,7 +89,7 @@ include("../inc/inc_fungsi.php");
             <a class="nav-link" href="#">Crud Galeri Vidio</a>
           </li>
           <li><a style="background: #F63854; border-radius: 5px; color: #fff;" class="nav-link scrollto"
-              href="../index.php">Log Out>></a></li>
+              href="logout.php">Log Out>></a></li>
         </ul>
 
       </nav>
