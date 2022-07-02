@@ -1,3 +1,41 @@
+<?php
+session_start();
+if (isset($_SESSION['admin_username']) != '') {
+  header("location:crud_berita.php");
+  exit();
+}
+include("../inc/inc_koneksi.php");
+
+$username   = "";
+$password   = "";
+$err        = "";
+
+if (isset($_POST['login'])) {
+  $username       = $_POST['username'];
+  $password       = $_POST['password'];
+
+  if ($username == '' or $password == '') {
+    $err    = "Silakan masukkan semua isian";
+  } else {
+    $sql1   = "select * from tb_admin where username = '$username'";
+    $q1     = mysqli_query($koneksi, $sql1);
+    $r1     = mysqli_fetch_array($q1);
+    $n1     = mysqli_num_rows($q1);
+
+    if ($n1 < 1) {
+      $err = "Username tidak ditemukan";
+    } elseif ($r1['password'] != md5($password)) {
+      $err = "Password yang kamu masukkan tidak sesuai";
+    } else {
+      $_SESSION['admin_username']     = $username;
+      header("location:crud_berita.php");
+      exit();
+    }
+  }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,21 +108,30 @@
   <div class="row justify-content-center">
     <div class="col-md-4">
       <main class="form-signin">
-        <h1 class="h3 mb-3 fw-normal text-center">Silahkan Login</h1>
+        <h1 class="h3 mb-3 fw-normal text-center">Login Admin</h1>
+        <?php
+        if ($err) {
+        ?>
+        <div class="alert alert-danger">
+          <?php echo $err ?>
+        </div>
+        <?php
+        }
+        ?>
         <form action="login.php" method="POST">
           <input type="hidden" name="_token" value="7IIcpiEmlesCd80RFffhh446DsfN8LDaA8tYrdDH">
           <div class="form-floating">
-            <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Alamat Email</label>
+            <input type="username" name="username" class="form-control" id="floatingInput"
+              placeholder="Masukan username" value="<?php echo $username ?>">
+            <label for="floatingInput">Username</label>
           </div>
           <div class="form-floating">
-            <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Password</label>
+            <input type="password" name="password" class="form-control" id="password" placeholder="Masukan password">
+            <label for="password">Password</label>
           </div>
-          <button class="w-100 btn btn-lg" style="background: #F63854; color: #fff;" type="submit">Login</button>
+          <button class="w-100 btn btn-lg" name="login" style="background: #F63854; color: #fff;"
+            type="submit">Login</button>
         </form>
-        <small class="d-block text-center mt-3">Lupa Password?
-          <a href="lupapass.php">Lupa password</a></small>
       </main>
     </div>
   </div>

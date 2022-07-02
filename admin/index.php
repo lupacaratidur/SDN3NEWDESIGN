@@ -76,7 +76,10 @@ include("../inc/inc_fungsi.php");
       <nav id="navbar" class="navbar">
         <ul>
           <li class="nav-item">
-            <a class="nav-link active" href="#">Crud Berita</a>
+            <a class="nav-link" href="crud_berita.php">Crud Berita</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="data_pendaftaran.php">Crud Pendaftaran </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Crud Galeri Foto </a>
@@ -85,7 +88,7 @@ include("../inc/inc_fungsi.php");
             <a class="nav-link" href="#">Crud Galeri Vidio</a>
           </li>
           <li><a style="background: #F63854; border-radius: 5px; color: #fff;" class="nav-link scrollto"
-              href="login/login.php">Log Out>></a></li>
+              href="login.php">Log Out>></a></li>
         </ul>
 
       </nav>
@@ -95,3 +98,11 @@ include("../inc/inc_fungsi.php");
 
   <!-- MAIN -->
   <main>
+
+    <h1>Hi, Halo</h1>
+    <p>
+      Selamat datang <b> ADMIN </b> di halaman Administrasi.
+    </p>
+
+
+    <?php include("inc_footer.php") ?>

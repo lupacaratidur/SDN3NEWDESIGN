@@ -40,6 +40,7 @@
   $alamat  = '';
   $nama_ibu  = '';
   $nama_ayah  = '';
+  $foto_peserta = '';
   $foto_kk  = '';
   $foto_akta  = '';
   $sukses  = '';
@@ -51,6 +52,7 @@
     $id = "";
   }
 
+
   if ($id != "") {
     $sql1       = "select * from tb_pendaftaran where id = '$id'";
     $q1         = mysqli_query($koneksi, $sql1);
@@ -60,6 +62,7 @@
     $alamat        = $r1['alamat'];
     $nama_ibu      = $r1['nama_ibu'];
     $nama_ayah     = $r1['nama_ayah'];
+    $foto_peserta  = $r1['foto_peserta'];
     $foto_kk       = $r1['foto_kk'];
     $foto_akta     = $r1['foto_akta'];
 
@@ -68,30 +71,43 @@
     }
   }
 
+
   if (isset($_POST['simpan'])) {
     $nama_peserta  = $_POST['nama_peserrta'];
     $nik           = $_POST['nik'];
     $alamat        = $_POST['alamat'];
     $nama_ibu      = $_POST['nama_ibu'];
     $nama_ayah     = $_POST['nama_ayah'];
+    $foto_peserta  = $_POST['foto_peserta'];
     $foto_kk       = $_POST['foto_kk'];
     $foto_akta     = $_POST['foto_akta'];
 
+    // jika belum mengisi lalu klik daftar maka muncul errpr
     if ($nama_peserta == '' or $nik == '' or $alamat == '' or $nama_ibu == '' or $nama_ayah == '' or $foto_kk == '' or $foto_akta == '') {
       $error     = "Silakan masukkan semua data.";
     }
 
 
+    // jika nama sudah terdaftar maksimal 2 kali maka error
+    if($nama_peserta != ''){
+      $sql1      = "select nama_peserta from tb_pendaftaran where nama_peserta = '$nama_peserta'";
+      $q1        = mysqli_query($koneksi,$sql1);
+      $n1        = mysqli_num_rows($q1);
+      if($n1 > 1){
+        $error  .= "<li>Nama yang anda masukan sudah terdaftar</li>";
+      }
 
-    if ($nama_peserta == '' or $nik == '' or $alamat == '' or $nama_ibu == '' or $nama_ayah == '' or $foto_kk == '' or $foto_akta == '') {
-      $error      = "Dimohon untuk memasukan data";
+      if(!filter_var($nama_peserta,FILTER_VA))
+
     }
+
+
 
     // Fungsi untuk memasukan data ke database phpmyadmin
     if ($id != "") {
-      $sql1 = "update tb_pendaftaran set nama_peserta = '$nama_peserta', nik = '$nik', alamat = '$alamat', nama_ibu = '$nama_ibu', nama_ayah = '$nama_ayah', foto_kk = '$foto_kk', foto_akta = '$foto_akta' where id = '$id'";
+      $sql1 = "update tb_pendaftaran set nama_peserta = '$nama_peserta', nik = '$nik', alamat = '$alamat', nama_ibu = '$nama_ibu', nama_ayah = '$nama_ayah', foto_peserta = '$foto_peserta', foto_kk = '$foto_kk', foto_akta = '$foto_akta' where id = '$id'";
     } else {
-      $sql1       = "insert into tb_pendaftaran(nama_peserta, nik, alamat, nama_ibu, nama_ayah, foto_kk, foto_akta) values('$nama_peserta', '$nik', '$alamat', '$nama_ibu', '$nama_ayah', '$foto_kk', '$foto_akta')";
+      $sql1       = "insert into tb_pendaftaran(nama_peserta, nik, alamat, nama_ibu, nama_ayah, foto_kk, foto_akta) values('$nama_peserta', '$nik', '$alamat', '$nama_ibu', '$nama_ayah', $foto_peserta, '$foto_kk', '$foto_akta')";
     }
 
     $q1         = mysqli_query($koneksi, $sql1);
@@ -135,7 +151,7 @@
             </ul>
           </li>
           <li><a style="background: #F63854; border-radius: 5px; color: #fff;" class="nav-link scrollto"
-              href="login/login.php">Login</a></li>
+              href="login.php">Login</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -194,8 +210,18 @@
         </div>
 
         <div class="form-floating">
-          <input type="text" name="nama_ayah" class="form-control mt-3" id="nama_ayah" placeholder="Nama Ayah" value="<?php echo $nama_ayah ?>>
+          <input type="text" name="nama_ayah" class="form-control mt-3" id="nama_ayah" value="<?php echo $nama_ayah ?>
+          placeholder=" Nama Ayah">
           <label for=" email">Nama Ayah</label>
+        </div>
+        <div class="mb-3">
+          <?php
+          if ($foto) {
+            echo "<img src='../berita/upload_an/$foto' style='max-height:100px;max-width:100px'/>";
+          }
+          ?>
+          <label for="formFile" class="form-label mt-3">Foto Peserta</label>
+          <input class="form-control" name="file_peserta" type="file" id="foto_peserta">
         </div>
         <div class="mb-3">
           <?php

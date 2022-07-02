@@ -88,7 +88,7 @@ include("../inc/inc_fungsi.php");
             <a class="nav-link" href="#">Crud Galeri Vidio</a>
           </li>
           <li><a style="background: #F63854; border-radius: 5px; color: #fff;" class="nav-link scrollto"
-              href="login/login.html">Log Out>></a></li>
+              href="../index.php">Log Out>></a></li>
         </ul>
 
       </nav>

@@ -76,10 +76,10 @@ include("../inc/inc_fungsi.php");
       <nav id="navbar" class="navbar">
         <ul>
           <li class="nav-item">
-            <a class="nav-link active" href="#">Crud Berita</a>
+            <a class="nav-link active" href="crud_berita.php">Crud Berita</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="crud_pendaftaran.php">Crud Pendaftaran </a>
+            <a class="nav-link " href="data_pendaftaran.php">Crud Pendaftaran </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Crud Galeri Foto </a>
@@ -88,7 +88,7 @@ include("../inc/inc_fungsi.php");
             <a class="nav-link" href="#">Crud Galeri Vidio</a>
           </li>
           <li><a style="background: #F63854; border-radius: 5px; color: #fff;" class="nav-link scrollto"
-              href="login/login.html">Log Out>></a></li>
+              href="../index.php">Log Out>></a></li>
         </ul>
 
       </nav>

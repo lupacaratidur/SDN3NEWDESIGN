@@ -62,7 +62,7 @@ include_once("inc/inc_fungsi.php");
             </ul>
           </li>
           <li><a style="background: #F63854; border-radius: 5px; color: #fff;" class="nav-link scrollto"
-              href="login/login.php">Login</a></li>
+              href="admin/login.php">Login</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
