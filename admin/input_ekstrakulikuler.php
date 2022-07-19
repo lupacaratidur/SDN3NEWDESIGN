@@ -15,7 +15,7 @@ if (isset($_GET['id'])) {
 }
 
 if ($id != "") {
-  $sql1   = "select * from tb_galeri_foto where id = '$id'";
+  $sql1   = "select * from tb_ekstrakulikuler where id = '$id'";
   $q1     = mysqli_query($koneksi, $sql1);
   $r1     = mysqli_fetch_array($q1);
   $nama   = $r1['nama'];
@@ -54,7 +54,7 @@ if (isset($_POST['simpan'])) {
 
       @unlink($direktori . "/$foto"); //delete data
 
-      $foto_name = "galeri_foto_" . $foto_name;
+      $foto_name = "ekstrakulikuler_" . $foto_name;
       move_uploaded_file($foto_file, $direktori . "/" . $foto_name);
 
       $foto = $foto_name;
@@ -63,26 +63,26 @@ if (isset($_POST['simpan'])) {
     }
 
     if ($id != "") {
-      $sql1   = "update tb_galeri_foto set nama = '$nama',foto='$foto_name',waktu=now() where id = '$id'";
+      $sql1   = "update tb_ekstrakulikuler set nama = '$nama',foto='$foto_name',waktu=now() where id = '$id'";
     } else {
-      $sql1       = "insert into tb_galeri_foto(nama,foto) values ('$nama','$foto_name')";
+      $sql1       = "insert into tb_ekstrakulikuler(nama,foto) values ('$nama','$foto_name')";
     }
 
     $q1         = mysqli_query($koneksi, $sql1);
     if ($q1) {
       $sukses     = "Sukses memasukkan data";
     } else {
-      $error      = "Gagal masukkan data";
+      $error      = "Gagal cuy masukkan data";
     }
   }
 }
 
 
 ?>
-<h1>Halaman Admin Input Data Galeri Foto</h1>
+<h1>Halaman Admin Input Data Ekstrakulikuler</h1>
 <div class="mb-3 row">
-  <a href="crud_galeri_foto.php">
-    << Kembali ke halaman admin Galeri Foto</a>
+  <a href="crud_ekstrakulikuler.php">
+    << Kembali ke halaman admin Ekstrakulikuler</a>
 </div>
 <?php
 if ($error) {

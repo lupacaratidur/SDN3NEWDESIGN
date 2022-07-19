@@ -98,25 +98,11 @@ function maximum_kata($isi, $maximum)
   return $isi;
 }
 
-function buat_link_berita($id)
+//menampilkan foto dari database untuk guru
+function guruguru_foto($id)
 {
   global $koneksi;
-  $sql1    = "select * from tb_berita where id = '$id'";
-  $q1     = mysqli_query($koneksi, $sql1);
-  $r1     = mysqli_fetch_array($q1);
-  $judul = bersihkan_judul($r1['judul']);
-  // http://localhost/website-company-profile/halaman.php/8/judul
-  return url_dasar() . "/tutors.php/$id/$judul";
-}
-
-
-//untuk menampilkan foto di crud_sambutan.php
-
-
-function ambil_foto_pendaftar($id)
-{
-  global $koneksi;
-  $sql1   = "select * from tb_berita where id = '$id'";
+  $sql1   = "select * from tb_guruguru where id = '$id'";
   $q1     = mysqli_query($koneksi, $sql1);
   $r1     = mysqli_fetch_array($q1);
   $foto   = $r1['foto'];
@@ -128,14 +114,84 @@ function ambil_foto_pendaftar($id)
   }
 }
 
-
-function ambil_isi_berita($id, $kolom)
+//menampilkan foto dari database untuk ekstrakulikuler
+function ekstrakulikuler_foto($id)
 {
   global $koneksi;
-  $sql1   = "select $kolom from tb_berita where id = '$id'";
+  $sql1   = "select * from tb_ekstrakulikuler where id = '$id'";
   $q1     = mysqli_query($koneksi, $sql1);
   $r1     = mysqli_fetch_array($q1);
-  return $r1[$kolom];
+  $foto   = $r1['foto'];
+
+  if ($foto) {
+    return $foto;
+  } else {
+    return 'default_user.png';
+  }
+}
+
+//menampilkan foto dari database untuk prestasi
+function prestasi_foto($id)
+{
+  global $koneksi;
+  $sql1   = "select * from tb_prestasi where id = '$id'";
+  $q1     = mysqli_query($koneksi, $sql1);
+  $r1     = mysqli_fetch_array($q1);
+  $foto   = $r1['foto'];
+
+  if ($foto) {
+    return $foto;
+  } else {
+    return 'default_user.png';
+  }
+}
+
+//menampilkan foto dari database untuk fasilitas
+function fasilitas_foto($id)
+{
+  global $koneksi;
+  $sql1   = "select * from tb_fasilitas where id = '$id'";
+  $q1     = mysqli_query($koneksi, $sql1);
+  $r1     = mysqli_fetch_array($q1);
+  $foto   = $r1['foto'];
+
+  if ($foto) {
+    return $foto;
+  } else {
+    return 'default_user.png';
+  }
+}
+
+//menampilkan foto dari database untuk fasilitas
+function galerifoto_foto($id)
+{
+  global $koneksi;
+  $sql1   = "select * from tb_galeri_foto where id = '$id'";
+  $q1     = mysqli_query($koneksi, $sql1);
+  $r1     = mysqli_fetch_array($q1);
+  $foto   = $r1['foto'];
+
+  if ($foto) {
+    return $foto;
+  } else {
+    return 'default_user.png';
+  }
+}
+
+//menampilkan foto dari database untuk fasilitas
+function sambutan_foto($id)
+{
+  global $koneksi;
+  $sql1   = "select * from tb_sambutan where id = '$id'";
+  $q1     = mysqli_query($koneksi, $sql1);
+  $r1     = mysqli_fetch_array($q1);
+  $foto   = $r1['foto'];
+
+  if ($foto) {
+    return $foto;
+  } else {
+    return 'default_user.png';
+  }
 }
 
 use PHPMailer\PHPMailer\PHPMailer;

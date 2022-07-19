@@ -9,22 +9,22 @@ if (isset($_GET['op'])) {
 }
 if ($op == 'delete') {
   $id = $_GET['id'];
-  $sql1   = "select foto from tb_prestasi where id = '$id'";
+  $sql1   = "select foto from tb_ekstrakulikuler where id = '$id'";
   $q1     = mysqli_query($koneksi, $sql1);
   $r1     = mysqli_fetch_array($q1);
   @unlink("../upload_an/" . $r1['foto']);
 
-  $sql1   = "delete from tb_prestasi where id = '$id'";
+  $sql1   = "delete from tb_ekstrakulikuler where id = '$id'";
   $q1     = mysqli_query($koneksi, $sql1);
   if ($q1) {
     $sukses     = "Berhasil hapus data";
   }
 }
 ?>
-<h1>Halaman Admin Prestasi</h1>
+<h1>Halaman Admin Ekstrakulikuler</h1>
 <p>
-  <a href="input_prestasi.php">
-    <input type="button" class="btn btn-primary" value="Tambah Prestasi Baru" />
+  <a href="input_ekstrakulikuler.php">
+    <input type="button" class="btn btn-primary" value="Tambah Ekstrakulikuler" />
   </a>
 </p>
 <?php
@@ -50,7 +50,6 @@ if ($sukses) {
     <tr>
       <th class="col-1">#</th>
       <th class="col-2">Foto</th>
-      <th>Prestasi</th>
       <th>Nama</th>
       <th class="col-2">Aksi</th>
     </tr>
@@ -66,7 +65,7 @@ if ($sukses) {
       }
       $sqltambahan    = " where " . implode(" or ", $sqlcari);
     }
-    $sql1   = "select * from tb_prestasi $sqltambahan";
+    $sql1   = "select * from tb_ekstrakulikuler $sqltambahan";
     $page   = isset($_GET['page']) ? (int)$_GET['page'] : 1;
     $mulai  = ($page > 1) ? ($page * $per_halaman) - $per_halaman : 0;
     $q1     = mysqli_query($koneksi, $sql1);
@@ -81,16 +80,16 @@ if ($sukses) {
     ?>
     <tr>
       <td><?php echo $nomor++ ?></td>
-      <td><img src="../upload_an/<?php echo prestasi_foto($r1['id']) ?>" style="max-height:100px;max-width:100px" />
+      <td><img src="../upload_an/<?php echo ekstrakulikuler_foto($r1['id']) ?>"
+          style="max-height:100px;max-width:100px" />
       </td>
-      <td><?php echo $r1['prestasi'] ?></td>
       <td><?php echo $r1['nama'] ?></td>
       <td>
-        <a href="input_prestasi.php?id=<?php echo $r1['id'] ?>">
+        <a href="input_ekstrakulikuler.php?id=<?php echo $r1['id'] ?>">
           <span class="badge bg-warning text-dark">Edit</span>
         </a>
 
-        <a href=crud_prestasi.php?op=delete&id=<?php echo $r1['id'] ?>"
+        <a href=crud_ekstrakulikuler.php?op=delete&id=<?php echo $r1['id'] ?>"
           onclick="return confirm('Apakah yakin mau hapus data?')">
           <span class="badge bg-danger">Delete</span>
         </a>
@@ -112,7 +111,7 @@ if ($sukses) {
     ?>
     <li class="page-item">
       <a class="page-link"
-        href="crud_prestasi.php?katakunci=<?php echo $katakunci ?>&cari=<?php echo $cari ?>&page=<?php echo $i ?>"><?php echo $i ?></a>
+        href="crud_ekstrakulikuler.php?katakunci=<?php echo $katakunci ?>&cari=<?php echo $cari ?>&page=<?php echo $i ?>"><?php echo $i ?></a>
     </li>
     <?php
     }

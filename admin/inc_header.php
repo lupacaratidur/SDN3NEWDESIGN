@@ -79,7 +79,7 @@ include("../inc/inc_fungsi.php");
           <li class="dropdown"><a href="#"><span>Crud Beranda</span> <i class="bi bi-chevron-bar-down"></i></a>
             <ul>
               <li><a href="crud_sambutan.php">Crud Sambutan</a></li>
-              <li><a href="crud_xtra.php">Crud Extrakulikuler</a></li>
+              <li><a href="crud_ekstrakulikuler.php">Crud Extrakulikuler</a></li>
               <li><a href="crud_prestasi.php">Crud Prestasi</a></li>
               <li><a href="crud_kontak.php">Crud Kontak</a></li>
             </ul>

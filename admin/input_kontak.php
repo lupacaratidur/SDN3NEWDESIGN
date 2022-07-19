@@ -48,7 +48,7 @@ if (isset($_POST['simpan'])) {
     if ($q1) {
       $sukses     = "Sukses memasukkan data";
     } else {
-      $error      = "Gagal cuy masukkan data";
+      $error      = "Gagal masukkan data";
     }
   }
 }
