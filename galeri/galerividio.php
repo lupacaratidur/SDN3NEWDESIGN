@@ -1,3 +1,8 @@
+<?php
+include_once("../inc/inc_koneksi.php");
+include_once("../inc/inc_fungsi.php");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,8 +58,8 @@
           <li class="dropdown"><a href="#"><span class="scrollto active">Galeri</span> <i
                 class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="galerifoto.php">Galeri Foto</a></li>
-              <li><a class="active" href="galerividio.php">Galeri Vidio</a></li>
+              <li><a class="active" href="galerividio.php">Galeri Foto</a></li>
+              <li><a href="galerividio.php">Galeri Vidio</a></li>
             </ul>
           </li>
           <li><a style="background: #F63854; border-radius: 5px; color: #fff;" class="nav-link scrollto"
@@ -71,87 +76,25 @@
         <h3 class="text-center my-5 ofh titled" data-aos="fade-down" data-aos-duration="1000">Galeri Vidio</h3>
       </div>
       <div class="row">
-        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="../assets/img/guru/">
-              <div class="card-body">
-                <h5 class="card-title text-center">Nama Kegiatan</h5>
-              </div>
-            </div>
-          </a>
+        <?php
+        $sql1   = "select * from tb_galeri_vidio order by id asc";
+        $q1     = mysqli_query($koneksi, $sql1);
+        while ($r1 = mysqli_fetch_array($q1)) {
+        ?>
+        <div class="card ">
+          <center>
+            <video controls>
+              <source src="<?php echo url_dasar() . "/../upload_an/" . galerividio_vidio($r1['id']) ?>">
+            </video>
+          </center>
+
+          <h5 class="card-title text-center"><?php echo $r1['judul'] ?></h5>
         </div>
-        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="img/guru/">
-              <div class="card-body">
-                <h5 class="card-title text-center">Nama Kegiatan</h5>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="img/guru/">
-              <div class="card-body">
-                <h5 class="card-title text-center">Nama Kegiatan</h5>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="img/guru/">
-              <div class="card-body">
-                <h5 class="card-title text-center">Nama Kegiatan</h5>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="img/guru/">
-              <div class="card-body">
-                <h5 class="card-title text-center">Nama Kegiatan</h5>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="img/guru/">
-              <div class="card-body">
-                <h5 class="card-title text-center">Nama Kegiatan</h5>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="img/guru/">
-              <div class="card-body">
-                <h5 class="card-title text-center">Nama Kegiatan</h5>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="img/guru/">
-              <div class="card-body">
-                <h5 class="card-title text-center">Nama Kegiatan</h5>
-              </div>
-            </div>
-          </a>
-        </div>
+        <?php
+        }
+        ?>
       </div>
+    </div>
     </div>
     <div class="spacer"></div>
   </section>

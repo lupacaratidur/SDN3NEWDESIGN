@@ -1,3 +1,7 @@
+<?php
+include_once("../inc/inc_koneksi.php");
+include_once("../inc/inc_fungsi.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,8 +80,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="title">Visi</h5>
-              <p class="card-text fs-5" align="justify">"Taqwa, Unggul, Berprestasi, Mandiri, Berbudi luhur, dan
-                Berdaya"</p>
+              <p class="card-text fs-5" align="justify">"<?php echo ambil_visi('1') ?>"</p>
             </div>
           </div>
         </div>
@@ -86,30 +89,8 @@
             <div class="card-body">
               <h5 class="title">Misi</h5>
               <p class="card-text " align="justify">
-              <ol>
-                <li class="fs-6" align="justify">
-                  Mengembangkan kehidupan yang religius disekolah dengan sholat berjamaah,memperingati hari hari besar
-                  dan hafalan surat-surat pendek.</br>
-                </li>
-                <li class="fs-6" align="justify">
-                  Membentuk dan membimbing siswa berahlak mulia dan berbudi pekerti luhur.</br>
-                </li>
-                <li class="fs-6" align="justify">
-                  Mengembangkan pembelajaran yang inovatif disetiap jenjang kelas.</br>
-                </li>
-                <li class="fs-6" align="justify">
-                  Membimbing peserta didik untuk mengembangkan diri sesuai bakat, minat dan potensi yang dimiliki.</br>
-                </li>
-                <li class="fs-6" align="justify">
-                  Mengembangkan kegiatan ekstrakulikuler dalam bidang teknologi informatika.</br>
-                </li>
-                <li class="fs-6" align="justify">
-                  Menumbuhkembangkan jiwa seni, dan cinta budaya serta bangga menjadi bangsa indonesia.</br>
-                </li>
-                <li class="fs-6" align="justify">
-                  Membimbing dan mengarahkan siswa untuk berprestasi dibidang seni dan olahraga serta membiasakan diri
-                  berdisiplin tinggi.</br>
-                </li>
+              <ol class="fs-6" align="justify">
+                <?php echo ambil_misi('1') ?>
               </ol>
             </div>
           </div>

@@ -1,3 +1,8 @@
+<?php
+include_once("../inc/inc_koneksi.php");
+include_once("../inc/inc_fungsi.php");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,86 +76,23 @@
         <h3 class="text-center my-5 ofh titled" data-aos="fade-down" data-aos-duration="1000">Guru</h3>
       </div>
       <div class="row">
+        <?php
+        $sql1   = "select * from tb_guruguru order by id asc";
+        $q1     = mysqli_query($koneksi, $sql1);
+        while ($r1 = mysqli_fetch_assoc($q1)) {
+        ?>
         <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="../assets/img/guru/shanks.jpg">
-              <div class="card-body">
-                <h5 class="card-title text-center">SHANKS</h5>
-              </div>
+          <div class="card">
+            <img class="card-img-top" src="<?php echo url_dasar() . "/../upload_an/" . guruguru_foto($r1['id']) ?>">
+            <div class="card-body">
+              <h5 class="card-title text-center"><?php echo $r1['nama'] ?></h5>
             </div>
-          </a>
+          </div>
         </div>
-        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="../assets/img/guru/baratie.jpg">
-              <div class="card-body">
-                <h5 class="card-title text-center">BARATIE</h5>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="../assets/img/guru/garp.jpg">
-              <div class="card-body">
-                <h5 class="card-title text-center">MONKEY D GARP</h5>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="../assets/img/guru/newgate.jpg">
-              <div class="card-body">
-                <h5 class="card-title text-center">EDWARD NEWGATE</h5>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="../assets/img/guru/hyogoro.jpg">
-              <div class="card-body">
-                <h5 class="card-title text-center">HYOGORO</h5>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="../assets/img/guru/oden.jpg">
-              <div class="card-body">
-                <h5 class="card-title text-center">ODEN</h5>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="../assets/img/guru/katakuri.jpg">
-              <div class="card-body">
-                <h5 class="card-title text-center">KATAKURI</h5>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="../assets/img/guru/reyleigh.jpg">
-              <div class="card-body">
-                <h5 class="card-title text-center">REYLEIGH</h5>
-              </div>
-            </div>
-          </a>
-        </div>
+        <?php
+        }
+        ?>
+
       </div>
     </div>
     <div class="spacer"></div>

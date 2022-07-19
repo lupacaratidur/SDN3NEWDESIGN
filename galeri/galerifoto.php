@@ -1,3 +1,8 @@
+<?php
+include_once("../inc/inc_koneksi.php");
+include_once("../inc/inc_fungsi.php");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +19,9 @@
   <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
@@ -48,13 +55,15 @@
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="../fasilitas/fasilitas.php">Fasilitas</a></li>
-          <li class="dropdown"><a href="#"><span class="scrollto active">Galeri</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="#"><span class="scrollto active">Galeri</span> <i
+                class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a class="active" href="galerifoto.php">Galeri Foto</a></li>
               <li><a href="galerividio.php">Galeri Vidio</a></li>
             </ul>
           </li>
-          <li><a style="background: #F63854; border-radius: 5px; color: #fff;" class="nav-link scrollto" href="../admin/login.php">Login</a></li>
+          <li><a style="background: #F63854; border-radius: 5px; color: #fff;" class="nav-link scrollto"
+              href="../admin/login.php">Login</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -67,86 +76,22 @@
         <h3 class="text-center my-5 ofh titled" data-aos="fade-down" data-aos-duration="1000">Galeri Foto</h3>
       </div>
       <div class="row">
+        <?php
+        $sql1   = "select * from tb_galeri_foto order by id asc";
+        $q1     = mysqli_query($koneksi, $sql1);
+        while ($r1 = mysqli_fetch_assoc($q1)) {
+        ?>
         <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="../assets/img/guru/">
-              <div class="card-body">
-                <h5 class="card-title text-center">Nama Kegiatan</h5>
-              </div>
+          <div class="card">
+            <img class="card-img-top" src="<?php echo url_dasar() . "/../upload_an/" . galerifoto_foto($r1['id']) ?>">
+            <div class="card-body">
+              <h5 class="card-title text-center"><?php echo $r1['nama'] ?></h5>
             </div>
-          </a>
+          </div>
         </div>
-        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="img/guru/">
-              <div class="card-body">
-                <h5 class="card-title text-center">Nama Kegiatan</h5>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="img/guru/">
-              <div class="card-body">
-                <h5 class="card-title text-center">Nama Kegiatan</h5>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="img/guru/">
-              <div class="card-body">
-                <h5 class="card-title text-center">Nama Kegiatan</h5>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="img/guru/">
-              <div class="card-body">
-                <h5 class="card-title text-center">Nama Kegiatan</h5>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="img/guru/">
-              <div class="card-body">
-                <h5 class="card-title text-center">Nama Kegiatan</h5>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="img/guru/">
-              <div class="card-body">
-                <h5 class="card-title text-center">Nama Kegiatan</h5>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="img/guru/">
-              <div class="card-body">
-                <h5 class="card-title text-center">Nama Kegiatan</h5>
-              </div>
-            </div>
-          </a>
-        </div>
+        <?php
+        }
+        ?>
       </div>
     </div>
     <div class="spacer"></div>
@@ -164,7 +109,8 @@
   </footer><!-- End Footer -->
 
   <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="../assets/vendor/purecounter/purecounter.js"></script>

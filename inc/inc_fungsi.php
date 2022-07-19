@@ -26,7 +26,7 @@ function ambil_isi_sambutan($id_tulisan)
   $sql1   = "select * from tb_sambutan where id = '$id_tulisan'";
   $q1     = mysqli_query($koneksi, $sql1);
   $r1     = mysqli_fetch_array($q1);
-  $text   = $r1['isi'];
+  $text   = $r1['sambutan'];
   return $text;
 }
 
@@ -63,6 +63,7 @@ function bersihkan_judul($judul)
   $judul_baru     = str_replace(" ", "-", $judul_baru);
   return $judul_baru;
 }
+
 function buat_link_halaman($id)
 {
   global $koneksi;
@@ -84,11 +85,6 @@ function dapatkan_id()
   return $id;
 }
 
-function set_isi($isi)
-{
-  $isi    = str_replace("../gambar/", url_dasar() . "/gambar/", $isi);
-  return $isi;
-}
 
 function maximum_kata($isi, $maximum)
 {
@@ -98,11 +94,11 @@ function maximum_kata($isi, $maximum)
   return $isi;
 }
 
-//menampilkan foto dari database untuk guru
-function guruguru_foto($id)
+//menampilkan foto dari database untuk sambutan
+function sambutan_foto($id)
 {
   global $koneksi;
-  $sql1   = "select * from tb_guruguru where id = '$id'";
+  $sql1   = "select * from tb_sambutan where id = '$id'";
   $q1     = mysqli_query($koneksi, $sql1);
   $r1     = mysqli_fetch_array($q1);
   $foto   = $r1['foto'];
@@ -114,6 +110,54 @@ function guruguru_foto($id)
   }
 }
 
+//BERITA
+function berita_foto($id)
+{
+  global $koneksi;
+  $sql1   = "select * from tb_berita where id = '$id'";
+  $q1     = mysqli_query($koneksi, $sql1);
+  $r1     = mysqli_fetch_array($q1);
+  $foto   = $r1['foto'];
+
+  if ($foto) {
+    return $foto;
+  } else {
+    return 'default_user.png';
+  }
+}
+
+
+function set_isi($isi)
+{
+  $isi    = str_replace("../upload_an/", url_dasar() . "/upload_an/", $isi);
+  return $isi;
+}
+
+
+function buat_link_berita($id)
+{
+  global $koneksi;
+  $sql1    = "select * from tb_berita where id = '$id'";
+  $q1     = mysqli_query($koneksi, $sql1);
+  $r1     = mysqli_fetch_array($q1);
+  $judul  = bersihkan_judul($r1['judul']);
+  // http://localhost/website-company-profile/halaman.php/8/judul
+  return url_dasar() . "/berita.php/$id/$judul";
+}
+//AKHIR BERITA
+
+
+//EKSTRAKULIKULER
+function buat_link_ekstrakulikuler($id)
+{
+  global $koneksi;
+  $sql1    = "select * from tb_ekstrakulikuler where id = '$id'";
+  $q1     = mysqli_query($koneksi, $sql1);
+  $r1     = mysqli_fetch_array($q1);
+  $nama  = bersihkan_judul($r1['nama']);
+  // http://localhost/website-company-profile/halaman.php/8/judul
+  return url_dasar() . "/crud_ekstrakulikuler.php/$id/$nama";
+}
 //menampilkan foto dari database untuk ekstrakulikuler
 function ekstrakulikuler_foto($id)
 {
@@ -128,6 +172,52 @@ function ekstrakulikuler_foto($id)
   } else {
     return 'default_user.png';
   }
+}
+
+
+//KONTAK
+function ambil_alamat($id_tulisan)
+{
+  global $koneksi;
+  $sql1   = "select * from tb_kontak where id = '$id_tulisan'";
+  $q1     = mysqli_query($koneksi, $sql1);
+  $r1     = mysqli_fetch_array($q1);
+  $text   = $r1['alamat'];
+  return $text;
+}
+
+function ambil_email($id_tulisan)
+{
+  global $koneksi;
+  $sql1   = "select * from tb_kontak where id = '$id_tulisan'";
+  $q1     = mysqli_query($koneksi, $sql1);
+  $r1     = mysqli_fetch_array($q1);
+  $text   = $r1['email'];
+  return $text;
+}
+
+function ambil_telepon($id_tulisan)
+{
+  global $koneksi;
+  $sql1   = "select * from tb_kontak where id = '$id_tulisan'";
+  $q1     = mysqli_query($koneksi, $sql1);
+  $r1     = mysqli_fetch_array($q1);
+  $text   = $r1['telepon'];
+  return $text;
+}
+//AKHIR KONTAK
+
+
+//PRESTASI
+function buat_link_prestasi($id)
+{
+  global $koneksi;
+  $sql1    = "select * from tb_prestasi where id = '$id'";
+  $q1     = mysqli_query($koneksi, $sql1);
+  $r1     = mysqli_fetch_array($q1);
+  $prestasi  = bersihkan_judul($r1['prestasi']);
+  // http://localhost/website-company-profile/halaman.php/8/judul
+  return url_dasar() . "/crud_prestasi.php/$id/$prestasi";
 }
 
 //menampilkan foto dari database untuk prestasi
@@ -145,6 +235,74 @@ function prestasi_foto($id)
     return 'default_user.png';
   }
 }
+//AKHIR PRESTASI
+
+
+
+//GURU GURU
+function buat_link_guruguru($id)
+{
+  global $koneksi;
+  $sql1    = "select * from tb_guruguru where id = '$id'";
+  $q1     = mysqli_query($koneksi, $sql1);
+  $r1     = mysqli_fetch_array($q1);
+  $nama  = bersihkan_judul($r1['$nama']);
+  // http://localhost/website-company-profile/halaman.php/8/judul
+  return url_dasar() . "/crud_prestasi.php/$id/$nama";
+}
+
+//menampilkan foto dari database untuk guru
+function guruguru_foto($id)
+{
+  global $koneksi;
+  $sql1   = "select * from tb_guruguru where id = '$id'";
+  $q1     = mysqli_query($koneksi, $sql1);
+  $r1     = mysqli_fetch_array($q1);
+  $foto   = $r1['foto'];
+
+  if ($foto) {
+    return $foto;
+  } else {
+    return 'default_user.png';
+  }
+}
+//AKHIR GURUGURU
+
+
+//VISI MISI
+function ambil_visi($id_tulisan)
+{
+  global $koneksi;
+  $sql1   = "select * from tb_visimisi where id = '$id_tulisan'";
+  $q1     = mysqli_query($koneksi, $sql1);
+  $r1     = mysqli_fetch_array($q1);
+  $text   = $r1['visi'];
+  return $text;
+}
+
+function ambil_misi($id_tulisan)
+{
+  global $koneksi;
+  $sql1   = "select * from tb_visimisi where id = '$id_tulisan'";
+  $q1     = mysqli_query($koneksi, $sql1);
+  $r1     = mysqli_fetch_array($q1);
+  $text   = $r1['misi'];
+  return $text;
+}
+//AKHIR VISI MISI
+
+
+//FASILITAS
+function buat_link_fasilitas($id)
+{
+  global $koneksi;
+  $sql1    = "select * from tb_fasilitas where id = '$id'";
+  $q1     = mysqli_query($koneksi, $sql1);
+  $r1     = mysqli_fetch_array($q1);
+  $nama  = bersihkan_judul($r1['$nama']);
+  // http://localhost/website-company-profile/halaman.php/8/judul
+  return url_dasar() . "/crud_fasilitas.php/$id/$nama";
+}
 
 //menampilkan foto dari database untuk fasilitas
 function fasilitas_foto($id)
@@ -161,8 +319,22 @@ function fasilitas_foto($id)
     return 'default_user.png';
   }
 }
+//AKHIR FASILITAS
 
-//menampilkan foto dari database untuk fasilitas
+
+//GALERI FOTO
+function buat_link_galeri_foto($id)
+{
+  global $koneksi;
+  $sql1    = "select * from tb_galeri_foto where id = '$id'";
+  $q1     = mysqli_query($koneksi, $sql1);
+  $r1     = mysqli_fetch_array($q1);
+  $nama  = bersihkan_judul($r1['$nama']);
+  // http://localhost/website-company-profile/halaman.php/8/judul
+  return url_dasar() . "/crud_galeri_foto.php/$id/$nama";
+}
+
+//menampilkan foto dari database untuk galeri foto
 function galerifoto_foto($id)
 {
   global $koneksi;
@@ -178,22 +350,31 @@ function galerifoto_foto($id)
   }
 }
 
-//menampilkan foto dari database untuk fasilitas
-function sambutan_foto($id)
+
+//GALERI VIDIO
+function buat_link_galeri_vidio($id)
 {
   global $koneksi;
-  $sql1   = "select * from tb_sambutan where id = '$id'";
+  $sql1    = "select * from tb_galeri_vidio where id = '$id'";
   $q1     = mysqli_query($koneksi, $sql1);
   $r1     = mysqli_fetch_array($q1);
-  $foto   = $r1['foto'];
+  $judul  = bersihkan_judul($r1['$judul']);
+  // http://localhost/website-company-profile/halaman.php/8/judul
+  return url_dasar() . "/crud_galeri_vidio.php/$id/$judul";
+}
 
-  if ($foto) {
-    return $foto;
+//menampilkan foto dari database untuk galeri vidio
+function galerividio_vidio($id)
+{
+  global $koneksi;
+  $sql1   = "select * from tb_galeri_vidio where id = '$id'";
+  $q1     = mysqli_query($koneksi, $sql1);
+  $r1     = mysqli_fetch_array($q1);
+  $vidio   = $r1['vidio'];
+
+  if ($vidio) {
+    return $vidio;
   } else {
     return 'default_user.png';
   }
 }
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;

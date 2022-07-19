@@ -1,7 +1,8 @@
 <?php include("inc_header.php") ?>
 <?php
-$nama       = "";
+$judul       = "";
 
+$isi        = "";
 $foto       = "";
 $foto_name  = "";
 
@@ -15,23 +16,24 @@ if (isset($_GET['id'])) {
 }
 
 if ($id != "") {
-  $sql1   = "select * from tb_galeri_foto where id = '$id'";
+  $sql1   = "select * from tb_berita where id = '$id'";
   $q1     = mysqli_query($koneksi, $sql1);
   $r1     = mysqli_fetch_array($q1);
-  $nama   = $r1['nama'];
+  $judul   = $r1['judul'];
+  $isi        = $r1['isi'];
+  $foto   = $r1['foto'];
 
-
-  if ($nama == '') {
+  if ($isi == '') {
     $error  = "Data tidak ditemukan";
   }
 }
 
 if (isset($_POST['simpan'])) {
-  $nama      = $_POST['nama'];
+  $judul      = $_POST['judul'];
+  $isi        = $_POST['isi'];
 
-
-  if ($nama == '') {
-    $error     = "Silakan masukkan semua data nama.";
+  if ($judul == '' or $isi == '') {
+    $error     = "Silakan masukkan semua data yakni adalah data isi dan judul.";
   }
   //Array ( [foto] => Array ( [name] => Budi Rahardjo.jpg [type] => image/jpeg [tmp_name] => C:\xampp2\tmp\php4FDD.tmp [error] => 0 [size] => 2375701 ) )
   // print_r($_FILES);
@@ -54,7 +56,7 @@ if (isset($_POST['simpan'])) {
 
       @unlink($direktori . "/$foto"); //delete data
 
-      $foto_name = "foto_" . $foto_name;
+      $foto_name = "berita_" . $foto_name;
       move_uploaded_file($foto_file, $direktori . "/" . $foto_name);
 
       $foto = $foto_name;
@@ -63,9 +65,9 @@ if (isset($_POST['simpan'])) {
     }
 
     if ($id != "") {
-      $sql1   = "update tb_galeri_foto set nama = '$nama',foto='$foto_name',waktu=now() where id = '$id'";
+      $sql1   = "update tb_berita set judul = '$judul',foto='$foto_name',isi='$isi',waktu=now() where id = '$id'";
     } else {
-      $sql1       = "insert into tb_galeri_foto(nama,foto) values ('$nama','$foto_name')";
+      $sql1       = "insert into tb_berita(judul,foto,isi) values ('$judul','$foto_name','$isi')";
     }
 
     $q1         = mysqli_query($koneksi, $sql1);
@@ -79,10 +81,10 @@ if (isset($_POST['simpan'])) {
 
 
 ?>
-<h1>Halaman Admin Input Data Galeri Foto</h1>
+<h1>Halaman Admin Input Data Berita</h1>
 <div class="mb-3 row">
-  <a href="crud_galeri_foto.php">
-    << Kembali ke halaman admin Galeri Foto</a>
+  <a href="crud_berita.php">
+    << Kembali ke halaman admin Berita</a>
 </div>
 <?php
 if ($error) {
@@ -104,9 +106,9 @@ if ($sukses) {
 ?>
 <form action="" method="post" enctype="multipart/form-data">
   <div class="mb-3 row">
-    <label for="nama" class="col-sm-2 col-form-label">Nama</label>
+    <label for="judul" class="col-sm-2 col-form-label">Judul</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="nama" value="<?php echo $nama ?>" name="nama">
+      <input type="text" class="form-control" id="judul" value="<?php echo $judul ?>" name="judul">
     </div>
   </div>
   <div class="mb-3 row">
@@ -118,6 +120,12 @@ if ($sukses) {
       }
       ?>
       <input type="file" class="form-control" id="foto" name="foto">
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="isi" class="col-sm-2 col-form-label">Isi</label>
+    <div class="col-sm-10">
+      <textarea name="isi" class="form-control" id="summernote"><?php echo $isi ?></textarea>
     </div>
   </div>
   <div class="mb-3 row">

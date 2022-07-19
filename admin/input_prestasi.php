@@ -1,6 +1,5 @@
 <?php include("inc_header.php") ?>
 <?php
-$nama       = "";
 $prestasi   = "";
 
 $foto       = "";
@@ -19,21 +18,21 @@ if ($id != "") {
   $sql1   = "select * from tb_prestasi where id = '$id'";
   $q1     = mysqli_query($koneksi, $sql1);
   $r1     = mysqli_fetch_array($q1);
-  $nama   = $r1['nama'];
+  $prestasi   = $r1['prestasi'];
 
 
-  if ($nama == '') {
+  if ($prestasi == '') {
     $error  = "Data tidak ditemukan";
   }
 }
 
 if (isset($_POST['simpan'])) {
-  $nama      = $_POST['nama'];
+
   $prestasi  = $_POST['prestasi'];
 
 
-  if ($nama == '') {
-    $error     = "Silakan masukkan semua data nama.";
+  if ($prestasi == '') {
+    $error     = "Silakan masukkan data prestasi.";
   }
   //Array ( [foto] => Array ( [name] => Budi Rahardjo.jpg [type] => image/jpeg [tmp_name] => C:\xampp2\tmp\php4FDD.tmp [error] => 0 [size] => 2375701 ) )
   // print_r($_FILES);
@@ -65,9 +64,9 @@ if (isset($_POST['simpan'])) {
     }
 
     if ($id != "") {
-      $sql1   = "update tb_prestasi set nama = '$nama',prestasi= '$prestasi, 'foto='$foto_name',waktu=now() where id = '$id'";
+      $sql1   = "update tb_prestasi set prestasi= '$prestasi, 'foto='$foto_name',waktu=now() where id = '$id'";
     } else {
-      $sql1       = "insert into tb_prestasi(nama,prestasi,foto) values ('$nama','$prestasi', '$foto_name')";
+      $sql1       = "insert into tb_prestasi(prestasi,foto) values ('$prestasi', '$foto_name')";
     }
 
     $q1         = mysqli_query($koneksi, $sql1);
@@ -105,12 +104,6 @@ if ($sukses) {
 }
 ?>
 <form action="" method="post" enctype="multipart/form-data">
-  <div class="mb-3 row">
-    <label for="nama" class="col-sm-2 col-form-label">Nama</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="nama" value="<?php echo $nama ?>" name="nama">
-    </div>
-  </div>
   <div class="mb-3 row">
     <label for="prestasi" class="col-sm-2 col-form-label">Prestasi</label>
     <div class="col-sm-10">

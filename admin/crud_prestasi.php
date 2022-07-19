@@ -51,7 +51,6 @@ if ($sukses) {
       <th class="col-1">#</th>
       <th class="col-2">Foto</th>
       <th>Prestasi</th>
-      <th>Nama</th>
       <th class="col-2">Aksi</th>
     </tr>
   </thead>
@@ -84,7 +83,6 @@ if ($sukses) {
       <td><img src="../upload_an/<?php echo prestasi_foto($r1['id']) ?>" style="max-height:100px;max-width:100px" />
       </td>
       <td><?php echo $r1['prestasi'] ?></td>
-      <td><?php echo $r1['nama'] ?></td>
       <td>
         <a href="input_prestasi.php?id=<?php echo $r1['id'] ?>">
           <span class="badge bg-warning text-dark">Edit</span>

@@ -1,6 +1,4 @@
-<?php
-include("inc_header.php")
-?>
+<?php include("inc_header.php") ?>
 <?php
 $sukses = "";
 $katakunci = (isset($_GET['katakunci'])) ? $_GET['katakunci'] : "";
@@ -11,15 +9,24 @@ if (isset($_GET['op'])) {
 }
 if ($op == 'delete') {
   $id = $_GET['id'];
-  $sql1 = "delete from tb_kontak where id = '$id'";
-  $q1 = mysqli_query($koneksi, $sql1);
+  $sql1   = "select foto from tb_berita where id = '$id'";
+  $q1     = mysqli_query($koneksi, $sql1);
+  $r1     = mysqli_fetch_array($q1);
+  @unlink("../upload_an/" . $r1['foto']);
+
+  $sql1   = "delete from tb_berita where id = '$id'";
+  $q1     = mysqli_query($koneksi, $sql1);
   if ($q1) {
-    $sukses = "Berhasil hapus data";
+    $sukses     = "Berhasil hapus data";
   }
 }
 ?>
-<h1>Kontak Admin</h1>
-
+<h1>Halaman Admin Berita</h1>
+<p>
+  <a href="input_berita.php">
+    <input type="button" class="btn btn-primary" value="Buat Berita Baru" />
+  </a>
+</p>
 <?php
 if ($sukses) {
 ?>
@@ -42,49 +49,45 @@ if ($sukses) {
   <thead>
     <tr>
       <th class="col-1">#</th>
-      <th>Alamat</th>
-      <th>Email</th>
-      <th>Telepon</th>
+      <th class="col-2">Foto</th>
+      <th>Judul</th>
       <th class="col-2">Aksi</th>
     </tr>
   </thead>
   <tbody>
     <?php
     $sqltambahan = "";
-    $per_info = 3;
+    $per_halaman = 6;
     if ($katakunci != '') {
       $array_katakunci = explode(" ", $katakunci);
       for ($x = 0; $x < count($array_katakunci); $x++) {
-        $sqlcari[] = "(judul like '%" . $array_katakunci[$x] . "%' or isi like '%" . $array_katakunci[$x] . "%')";
+        $sqlcari[] = "(nama like '%" . $array_katakunci[$x] . "%' or isi like '%" . $array_katakunci[$x] . "%')";
       }
       $sqltambahan    = " where " . implode(" or ", $sqlcari);
     }
-    $sql1   = "select * from tb_kontak $sqltambahan";
+    $sql1   = "select * from tb_berita $sqltambahan";
     $page   = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-    $mulai  = ($page > 1) ? ($page * $per_info) - $per_info : 0;
+    $mulai  = ($page > 1) ? ($page * $per_halaman) - $per_halaman : 0;
     $q1     = mysqli_query($koneksi, $sql1);
     $total  = mysqli_num_rows($q1);
-    $pages  = ceil($total / $per_info);
+    $pages  = ceil($total / $per_halaman);
     $nomor  = $mulai + 1;
-    $sql1   = $sql1 . " order by id desc limit $mulai,$per_info";
+    $sql1   = $sql1 . " order by id desc limit $mulai,$per_halaman";
 
     $q1     = mysqli_query($koneksi, $sql1);
 
     while ($r1 = mysqli_fetch_array($q1)) {
-
     ?>
     <tr>
       <td><?php echo $nomor++ ?></td>
-      <td><?php echo $r1['alamat'] ?></td>
-      <td><?php echo $r1['email'] ?></td>
-      <td><?php echo $r1['telepon'] ?></td>
-
+      <td><img src="../upload_an/<?php echo berita_foto($r1['id']) ?>" style="max-height:100px;max-width:100px" /></td>
+      <td><?php echo $r1['judul'] ?></td>
       <td>
-        <a href="input_kontak.php?id=<?php echo $r1['id'] ?>">
+        <a href="input_berita.php?id=<?php echo $r1['id'] ?>">
           <span class="badge bg-warning text-dark">Edit</span>
         </a>
 
-        <a href="crud_kontak.php?op=delete&id=<?php echo $r1['id'] ?>"
+        <a href="crud_berita.php?op=delete&id=<?php echo $r1['id'] ?>"
           onclick="return confirm('Apakah yakin mau hapus data bro?')">
           <span class="badge bg-danger">Delete</span>
         </a>
@@ -106,17 +109,11 @@ if ($sukses) {
     ?>
     <li class="page-item">
       <a class="page-link"
-        href="info.php?katakunci=<?php echo $katakunci ?>&cari=<?php echo $cari ?>&page=<?php echo $i ?>"><?php echo $i ?></a>
+        href="tutors.php?katakunci=<?php echo $katakunci ?>&cari=<?php echo $cari ?>&page=<?php echo $i ?>"><?php echo $i ?></a>
     </li>
     <?php
     }
     ?>
   </ul>
 </nav>
-
-
-
-
-<?php
-include("inc_footer.php")
-?>
+<?php include("inc_footer.php") ?>

@@ -17,11 +17,6 @@ include("inc_header.php")
       }
     }
     ?> <h1>Visi & Misi Admin</h1>
-<p>
-  <a href="input_visimisi.php">
-    <input type="button" class="btn btn-primary" value="Buat visi misi" />
-  </a>
-</p>
 <?php
 if ($sukses) {
 ?>

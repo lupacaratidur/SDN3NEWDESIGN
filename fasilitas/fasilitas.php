@@ -1,3 +1,8 @@
+<?php
+include_once("../inc/inc_koneksi.php");
+include_once("../inc/inc_fungsi.php");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,77 +66,25 @@
         <h3 class="text-center my-5 ofh titled" data-aos="fade-down" data-aos-duration="1000">Fasilitas</h3>
       </div>
       <div class="row">
+        <?php
+        $sql1   = "select * from tb_fasilitas order by id asc";
+        $q1     = mysqli_query($koneksi, $sql1);
+        while ($r1 = mysqli_fetch_assoc($q1)) {
+        ?>
         <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="../assets/img/fasilitas/halaman.jpg">
-              <div class="card-body">
-                <h5 class="card-title text-center">Halaman</h5>
-              </div>
+          <div class="card">
+            <img class="card-img-top" src="<?php echo url_dasar() . "/../upload_an/" . fasilitas_foto($r1['id']) ?>">
+            <div class="card-body">
+              <h5 class="card-title text-center"><?php echo $r1['nama'] ?></h5>
             </div>
-          </a>
+          </div>
         </div>
-        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="../assets/img/fasilitas/kelas3.jpeg">
-              <div class="card-body">
-                <h5 class="card-title text-center">Ruang Kelas</h5>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="../assets/img/fasilitas/Lorong kelas.jpg">
-              <div class="card-body">
-                <h5 class="card-title text-center">Lorong Kelas</h5>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="../assets/img/fasilitas/mushola.jpeg">
-              <div class="card-body">
-                <h5 class="card-title text-center">Mushola</h5>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="../assets/img/fasilitas/Perpustakaan.jpeg">
-              <div class="card-body">
-                <h5 class="card-title text-center">Perpustakaan</h5>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="../assets/img/fasilitas/Toilet guru.jpeg">
-              <div class="card-body">
-                <h5 class="card-title text-center">Toilet</h5>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
-          <a href="#" target="_BLANK">
-            <div class="card">
-              <img class="card-img-top" src="../assets/img/fasilitas/Uks.jpeg">
-              <div class="card-body">
-                <h5 class="card-title text-center">UKS</h5>
-              </div>
-            </div>
-          </a>
-        </div>
+        <?php
+        }
+        ?>
+
       </div>
+    </div>
     </div>
     <div class="spacer"></div>
   </section>

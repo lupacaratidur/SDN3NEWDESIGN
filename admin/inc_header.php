@@ -91,6 +91,7 @@ include("../inc/inc_fungsi.php");
             </ul>
           </li>
           <li><a class="nav-link" href="crud_fasilitas.php">Crud Fasilitas</a></li>
+          <li><a class="nav-link" href="crud_berita.php">Crud Berita</a></li>
           <li class="dropdown"><a href="#"><span>Crud Galeri</span> <i class="bi bi-chevron-bar-down"></i></a>
             <ul>
               <li><a href="crud_galeri_foto.php">Crud Galeri Foto</a></li>
