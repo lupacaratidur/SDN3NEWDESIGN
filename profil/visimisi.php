@@ -51,7 +51,6 @@
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="../fasilitas/fasilitas.php">Fasilitas</a></li>
-          <li><a class="nav-link scrollto" href="../berita.php">Berita</a></li>
           <li class="dropdown"><a href="#"><span>Galeri</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="../galeri/galerifoto.php">Galeri Foto</a></li>

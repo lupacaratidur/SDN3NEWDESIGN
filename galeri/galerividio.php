@@ -50,7 +50,6 @@
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="../fasilitas/fasilitas.php">Fasilitas</a></li>
-          <li><a class="nav-link scrollto" href="../berita.php">Berita</a></li>
           <li class="dropdown"><a href="#"><span class="scrollto active">Galeri</span> <i
                 class="bi bi-chevron-down"></i></a>
             <ul>

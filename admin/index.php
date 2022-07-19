@@ -76,17 +76,26 @@ include("../inc/inc_fungsi.php");
       <h1 class="logo"><a href="#">Admin<span>.</span></a></h1>
       <nav id="navbar" class="navbar">
         <ul>
-          <li class="nav-item">
-            <a class="nav-link" href="crud_berita.php">Crud Berita</a>
+          <li class="dropdown"><a href="#"><span>Crud Beranda</span> <i class="bi bi-chevron-bar-down"></i></a>
+            <ul>
+              <li><a href="crud_sambutan.php">Crud Sambutan</a></li>
+              <li><a href="crud_sambutan.php">Crud Extrakulikuler</a></li>
+              <li><a href="crud_sambutan.php">Crud Prestasi</a></li>
+              <li><a href="crud_sambutan.php">Crud Kontak</a></li>
+            </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="data_pendaftaran.php">Crud Pendaftaran </a>
+          <li class="dropdown"><a href="#"><span>Crud Profil</span> <i class="bi bi-chevron-bar-down"></i></a>
+            <ul>
+              <li><a href="crud_sambutan.php">Crud Visi Misi</a></li>
+              <li><a href="crud_sambutan.php">Crud Guru Guru</a></li>
+            </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Crud Galeri Foto </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Crud Galeri Vidio</a>
+          <li><a class="nav-link" href="#beranda">Crud Fasilitas</a></li>
+          <li class="dropdown"><a href="#"><span>Crud Galeri</span> <i class="bi bi-chevron-bar-down"></i></a>
+            <ul>
+              <li><a href="crud_sambutan.php">Crud Galeri Foto</a></li>
+              <li><a href="crud_sambutan.php">Crud Galeri Vidio</a></li>
+            </ul>
           </li>
           <li><a style="background: #F63854; border-radius: 5px; color: #fff;" class="nav-link scrollto"
               href="logout.php">Log Out>></a></li>

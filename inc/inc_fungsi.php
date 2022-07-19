@@ -9,46 +9,53 @@ function url_dasar()
 function ambil_gambar($id)
 {
   global $koneksi;
-  $sql1 = "select * from halaman where id = '$id'";
+  $sql1 = "select * from tb_sambutan where id = '$id'";
   $q1   = mysqli_query($koneksi, $sql1);
   $r1   = mysqli_fetch_array($q1);
   $text = $r1['foto'];
 
   preg_match('/< *img[^>]*src *= *["\']?([^"\']*)/i', $text, $img);
   $foto = $img[1]; // ../gambar/filename.jpg
-  $foto = str_replace("../berita/upload_an/", url_dasar() . "/berita/upload_an/", $foto);
+  $foto = str_replace("../upload_an/", url_dasar() . "/upload_an/", $foto);
   return $foto;
 }
 
-function ambil_kutipan($id_tulisan)
+function ambil_isi_sambutan($id_tulisan)
 {
   global $koneksi;
-  $sql1   = "select * from halaman where id = '$id_tulisan'";
+  $sql1   = "select * from tb_sambutan where id = '$id_tulisan'";
   $q1     = mysqli_query($koneksi, $sql1);
   $r1     = mysqli_fetch_array($q1);
-  $text   = $r1['kutipan'];
+  $text   = $r1['isi'];
   return $text;
 }
 
-function ambil_judul($id_tulisan)
+function ambil_nama_sambutan($id_tulisan)
 {
   global $koneksi;
-  $sql1   = "select * from halaman where id = '$id_tulisan'";
+  $sql1   = "select * from tb_sambutan where id = '$id_tulisan'";
   $q1     = mysqli_query($koneksi, $sql1);
   $r1     = mysqli_fetch_array($q1);
-  $text   = $r1['judul'];
+  $text   = $r1['nama'];
   return $text;
 }
 
-function ambil_isi($id_tulisan)
+function ambil_foto_sambutan($id_tulisan)
 {
   global $koneksi;
-  $sql1   = "select * from halaman where id = '$id_tulisan'";
+  $sql1   = "select * from tb_sambutan where id = '$id_tulisan' ";
   $q1     = mysqli_query($koneksi, $sql1);
   $r1     = mysqli_fetch_array($q1);
-  $text   = strip_tags($r1['isi']);
-  return $text;
+  $foto   = $r1['foto'];
+
+  if ($foto) {
+    return $foto;
+  } else {
+    return 'default_user.png';
+  }
 }
+
+
 function bersihkan_judul($judul)
 {
   $judul_baru     = strtolower($judul);
@@ -91,21 +98,20 @@ function maximum_kata($isi, $maximum)
   return $isi;
 }
 
-//untuk menampilkan foto di crud_dashboard.php
-function ambil_foto($id)
+function buat_link_berita($id)
 {
   global $koneksi;
-  $sql1   = "select * from tb_berita where id = '$id'";
+  $sql1    = "select * from tb_berita where id = '$id'";
   $q1     = mysqli_query($koneksi, $sql1);
   $r1     = mysqli_fetch_array($q1);
-  $foto   = $r1['foto'];
-
-  if ($foto) {
-    return $foto;
-  } else {
-    return 'default_user.png';
-  }
+  $judul = bersihkan_judul($r1['judul']);
+  // http://localhost/website-company-profile/halaman.php/8/judul
+  return url_dasar() . "/tutors.php/$id/$judul";
 }
+
+
+//untuk menampilkan foto di crud_sambutan.php
+
 
 function ambil_foto_pendaftar($id)
 {
