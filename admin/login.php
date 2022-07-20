@@ -4,7 +4,7 @@ if (isset($_SESSION['admin_username']) != '') {
   header("location:index.php");
   exit();
 }
-include("../inc/inc_koneksi.php");
+include_once("../inc/inc_koneksi.php");
 
 $username   = "";
 $password   = "";

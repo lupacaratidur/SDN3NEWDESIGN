@@ -80,7 +80,6 @@ if (isset($_POST['simpan'])) {
       $error      = "Gagal masukkan data";
     }
   }
-  var_dump($q1);
 }
 
 

@@ -82,18 +82,27 @@ include_once("inc/inc_fungsi.php");
   <section class="sambutan-kepsek section-bg">
     <div class="container">
       <div class="row">
-        <div class="col-sm-5 video-box">
-          <img src="<?php echo ambil_foto_sambutan('6') ?>" class="img-fluid" alt="" width="6000">
+        <?php
+        $sql1   = "select * from tb_sambutan order by id asc";
+        $q1     = mysqli_query($koneksi, $sql1);
+        $r1 = mysqli_fetch_array($q1); {
+        ?>
+        <div class="col-sm-5 ">
+          <img src="<?php echo url_dasar() . "/upload_an/" . sambutan_foto($r1['id']) ?>" class="img-fluid" alt=""
+            width="6000">
         </div>
 
         <div class="col mt-3">
           <div class="icon-box">
             <h2 style="color: #F63854;" class="oren">Sambutan Kepala Sekolah</h2>
-            <p><?php echo ambil_isi_sambutan('3') ?></p><br>
-            <p><?php echo ambil_nama_sambutan('6') ?></p>
+            <p><?php echo ambil_isi_sambutan('14') ?></p><br>
+            <p><?php echo ambil_nama_sambutan('14') ?></p>
           </div>
         </div>
       </div>
+      <?php
+        }
+    ?>
     </div>
   </section>
   <!-- Akhir Sambutan Kepala Sekolah -->
