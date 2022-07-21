@@ -63,7 +63,7 @@ include_once("../inc/inc_fungsi.php");
             </ul>
           </li>
           <li><a style="background: #F63854; border-radius: 5px; color: #fff;" class="nav-link scrollto"
-              href="../login/login.php">Login</a></li>
+              href="../admin/login.php">Login</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -75,12 +75,21 @@ include_once("../inc/inc_fungsi.php");
       <div class="row justify-content-center">
         <h3 class="text-center my-5 ofh titled" data-aos="fade-down" data-aos-duration="1000">Guru</h3>
       </div>
+      <?php
+      $sql1   = "select * from tb_guruguru order by id asc";
+      $q1     = mysqli_query($koneksi, $sql1);
+      $r1 = mysqli_fetch_assoc($q1);
+
+      if (@$r1['nama'] == null) {
+        echo ("<center><h5>Coming Soon...</h5></center>");
+      } else {
+      ?>
       <div class="row">
         <?php
-        $sql1   = "select * from tb_guruguru order by id asc";
-        $q1     = mysqli_query($koneksi, $sql1);
-        while ($r1 = mysqli_fetch_assoc($q1)) {
-        ?>
+          $sql1   = "select * from tb_guruguru order by id asc";
+          $q1     = mysqli_query($koneksi, $sql1);
+          while ($r1 = mysqli_fetch_assoc($q1)) {
+          ?>
         <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
           <div class="card">
             <img class="card-img-top" src="<?php echo url_dasar() . "/../upload_an/" . guruguru_foto($r1['id']) ?>">
@@ -90,11 +99,14 @@ include_once("../inc/inc_fungsi.php");
           </div>
         </div>
         <?php
-        }
-        ?>
+          }
+          ?>
 
       </div>
     </div>
+    <?php
+      }
+  ?>
     <div class="spacer"></div>
   </section>
   <!-- AKHIR GURU -->

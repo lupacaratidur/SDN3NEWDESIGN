@@ -75,12 +75,21 @@ include_once("../inc/inc_fungsi.php");
       <div class="row justify-content-center">
         <h3 class="text-center my-5 ofh titled" data-aos="fade-down" data-aos-duration="1000">Galeri Vidio</h3>
       </div>
+      <?php
+      $sql1   = "select * from tb_galeri_vidio order by id asc";
+      $q1     = mysqli_query($koneksi, $sql1);
+      $r1 = mysqli_fetch_assoc($q1);
+
+      if (@$r1['judul'] == null) {
+        echo ("<center><h5>Coming Soon...</h5></center>");
+      } else {
+      ?>
       <div class="row">
         <?php
-        $sql1   = "select * from tb_galeri_vidio order by id asc";
-        $q1     = mysqli_query($koneksi, $sql1);
-        while ($r1 = mysqli_fetch_array($q1)) {
-        ?>
+          $sql1   = "select * from tb_galeri_vidio order by id asc";
+          $q1     = mysqli_query($koneksi, $sql1);
+          while ($r1 = mysqli_fetch_array($q1)) {
+          ?>
         <div class="card ">
           <center>
             <video controls>
@@ -91,11 +100,14 @@ include_once("../inc/inc_fungsi.php");
           <h5 class="card-title text-center"><?php echo $r1['judul'] ?></h5>
         </div>
         <?php
-        }
-        ?>
+          }
+          ?>
       </div>
     </div>
     </div>
+    <?php
+      }
+  ?>
     <div class="spacer"></div>
   </section>
   <!-- AKHIR GURU -->

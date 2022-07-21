@@ -22,11 +22,6 @@ if ($op == 'delete') {
 }
 ?>
 <h1>Halaman Admin Sambutan</h1>
-<p>
-  <a href="input_sambutan.php">
-    <input type="button" class="btn btn-primary" value="Tambah Sambutan Baru" />
-  </a>
-</p>
 <?php
 if ($sukses) {
 ?>

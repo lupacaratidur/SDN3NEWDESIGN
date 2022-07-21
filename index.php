@@ -141,12 +141,21 @@ include_once("inc/inc_fungsi.php");
       <h2>Prestasi</h2>
     </div>
     <div class="container">
+      <?php
+      $sql1   = "select * from tb_prestasi order by id asc";
+      $q1     = mysqli_query($koneksi, $sql1);
+      $r1 = mysqli_fetch_assoc($q1);
+
+      if (@$r1['prestasi'] == null) {
+        echo ("<center><h5>Coming Soon...</h5></center>");
+      } else {
+      ?>
       <div class="row">
         <?php
-        $sql1   = "select * from tb_prestasi order by id asc";
-        $q1     = mysqli_query($koneksi, $sql1);
-        while ($r1 = mysqli_fetch_assoc($q1)) {
-        ?>
+          $sql1   = "select * from tb_prestasi order by id asc";
+          $q1     = mysqli_query($koneksi, $sql1);
+          while ($r1 = mysqli_fetch_assoc($q1)) {
+          ?>
         <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
           <div class="card">
             <img class="card-img-top" src="<?php echo url_dasar() . "/upload_an/" . prestasi_foto($r1['id']) ?>">
@@ -156,12 +165,14 @@ include_once("inc/inc_fungsi.php");
           </div>
         </div>
         <?php
-        }
-        ?>
+          }
+          ?>
 
       </div>
     </div>
-    <div class="spacer"></div>
+    <?php
+      }
+  ?>
 
     </div>
   </section>
@@ -172,111 +183,122 @@ include_once("inc/inc_fungsi.php");
     <div class="section-title">
       <h2>Berita</h2>
     </div>
+    <div class="container">
+      <?php
+      $sql1   = "select * from tb_berita order by id asc";
+      $q1     = mysqli_query($koneksi, $sql1);
+      $r1 = mysqli_fetch_assoc($q1);
 
-    <section class="berita">
-      <div class="container">
+      if (@$r1['judul'] == null) {
+        echo ("<center><h5>Coming Soon...</h5></center>");
+      } else {
+      ?>
+
+      <div class="row">
         <?php
-        $sql1       = "select * from tb_berita order by id asc";
-        $q1         = mysqli_query($koneksi, $sql1);
-        while ($r1 = mysqli_fetch_array($q1)) {
-        ?>
-        <div class="container-sm">
-          <div class="row d-flex justify-content-center p-3">
-            <div class="col-md-4 col-md-offset-5 p-3">
-              <div class="card-berita-2" style="width: 18rem;">
-                <a href="<?php echo buat_link_berita($r1['id']) ?>">
-                  <img src="<?php echo url_dasar() . "/upload_an/" . berita_foto($r1['id']) ?>" class="card-img-top"
-                    alt=""></a>
-                <div class="card-body">
-                  <h6 class="card-title-2"><?php echo $r1['judul'] ?></h6>
-                  <a href="<?php echo buat_link_berita($r1['id']) ?>" class="btn btn-oren">Selengkapnya</a>
-                </div>
-              </div>
+          $sql1   = "select * from tb_berita order by id asc";
+          $q1     = mysqli_query($koneksi, $sql1);
+          while ($r1 = mysqli_fetch_assoc($q1)) {
+
+          ?>
+
+        <div class="col-md-4 ofh" data-aos="zoom-out" data-aos-duration="1000">
+          <div class="card">
+            <img class="card-img-top" src="<?php echo url_dasar() . "/upload_an/" . berita_foto($r1['id']) ?>">
+            <div class="card-body">
+              <h5 class="card-title text-center"><?php echo $r1['judul'] ?></h5>
+              <a href="<?php echo buat_link_berita($r1['id']) ?>" class="btn btn-oren">Selengkapnya</a>
             </div>
           </div>
         </div>
         <?php
-        }
-        ?>
+          }
+
+          ?>
       </div>
-    </section>
-    <!-- END BERITA SECTION -->
+      <?php
+      }
+      ?>
+    </div>
 
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container" data-aos="fade-up">
+  </section>
+  <!-- END BERITA SECTION -->
 
-        <div class="section-title">
-          <h2>Kontak</h2>
-          <h3><span>Hubungi Kami</span></h3>
+  <!-- ======= Contact Section ======= -->
+  <section id="contact" class="contact">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>Kontak</h2>
+        <h3><span>Hubungi Kami</span></h3>
+      </div>
+
+      <div class="row" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-lg-6">
+          <div class="info-box mb-4">
+            <i class="bx bx-map"></i>
+            <h3>Alamat Kami</h3>
+            <p><?php echo ambil_alamat('6') ?></p>
+          </div>
         </div>
 
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-          <div class="col-lg-6">
-            <div class="info-box mb-4">
-              <i class="bx bx-map"></i>
-              <h3>Alamat Kami</h3>
-              <p><?php echo ambil_alamat('4') ?></p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="info-box  mb-4">
-              <i class="bx bx-envelope"></i>
-              <h3>Email</h3>
-              <p><?php echo ambil_email('4') ?></p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="info-box  mb-4">
-              <i class="bx bx-phone-call"></i>
-              <h3>Telepon</h3>
-              <p><?php echo ambil_telepon('4') ?></p>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-
-          <div class="col-lg-6 ">
-            <iframe class="mb-4 mb-lg-0"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63300.96974094285!2d109.20378569061324!3d-7.430839277501736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e655f2b30771ceb%3A0x9ff1b2354038c296!2sSDN%203%20PURWOKERTO%20KIDUL!5e0!3m2!1sid!2sid!4v1654894660836!5m2!1sid!2sid" " frameborder="
-              0" style="border:0; width: 205%; height: 384px;" allowfullscreen></iframe>
+        <div class="col-lg-3 col-md-6">
+          <div class="info-box  mb-4">
+            <i class="bx bx-envelope"></i>
+            <h3>Email</h3>
+            <p><?php echo ambil_email('6') ?></p>
           </div>
         </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="info-box  mb-4">
+            <i class="bx bx-phone-call"></i>
+            <h3>Telepon</h3>
+            <p><?php echo ambil_telepon('6') ?></p>
+          </div>
+        </div>
+
       </div>
-    </section><!-- End Contact Section -->
 
+      <div class="row" data-aos="fade-up" data-aos-delay="100">
 
-
-    <div class="container py-4">
-      <div class="copyright">
-        &copy; Copyright <strong><span>SD Negeri 3-Purwokerto Kidul</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        Designed by <a href="">wahrul</a>
+        <div class="col-lg-6 ">
+          <iframe class="mb-4 mb-lg-0"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63300.96974094285!2d109.20378569061324!3d-7.430839277501736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e655f2b30771ceb%3A0x9ff1b2354038c296!2sSDN%203%20PURWOKERTO%20KIDUL!5e0!3m2!1sid!2sid!4v1654894660836!5m2!1sid!2sid" " frameborder="
+            0" style="border:0; width: 205%; height: 384px;" allowfullscreen></iframe>
+        </div>
       </div>
     </div>
-    </footer><!-- End Footer -->
+  </section><!-- End Contact Section -->
 
-    <div id="preloader"></div>
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-        class="bi bi-arrow-up-short"></i></a>
 
-    <!-- Vendor JS Files -->
-    <script src="assets/vendor/purecounter/purecounter.js"></script>
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
 
-    <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
+  <div class="container py-4">
+    <div class="copyright">
+      &copy; Copyright <strong><span>SD Negeri 3-Purwokerto Kidul</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      Designed by <a href="">wahrul</a>
+    </div>
+  </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
 
 </body>
 
